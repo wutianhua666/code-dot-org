@@ -69,9 +69,14 @@ var ShareDialogBody = React.createClass({
     }
 
     var facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + this.props.encodedShareUrl;
-    var twitterShareUrl = "https://twitter.com/intent/tweet?url=" + this.props.encodedShareUrl +
-      "&amp;text=Check%20out%20what%20I%20made%20@codeorg&amp;hashtags=HourOfCode&amp;related=codeorg";
-
+    var twitterShareUrl = "https://twitter.com/intent/tweet?url=" + this.props.encodedShareUrl + "&amp;text=Check%20out%20what%20I%20made%20@codeorg&amp;hashtags=HourOfCode&amp;related=codeorg";
+    var tsinShareUrl = "http://service.weibo.com/share/share.php?url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
+    var qzoneShareUrl = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
+    var qqShareUrl = "http://connect.qq.com/widget/shareqq/index.html?url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
+    var doubanShareUrl ="http://shuo.douban.com/!service/share?&href=" + this.props.encodedShareUrl + '&text=' + document.getElementsByTagName('title')[0].text;
+    var tiebaShareUrl = "http://tieba.baidu.com/f/commit/share/openShareApi?title=&desc=&pic=&url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
+    var weixinShareUrl = "http://s.jiathis.com/?webid=weixin&url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text + "&isexit=true";
+    
     var abuseStyle = {
       border: '1px solid',
       borderRadius: 10,
@@ -127,6 +132,16 @@ var ShareDialogBody = React.createClass({
               readOnly="true"
               value={this.props.shareUrl}
               style={{cursor: 'copy', width: 465}}/>
+          </div>
+          <div className="social-buttons bdsharebuttonbox">
+            <a className="bds_qzone"   data-cmd="qzone"  title="分享到QQ空间"   target="_blank" href={qzoneShareUrl} />
+            <a className="bds_tsina"   data-cmd="tsina"  title="分享到新浪微博"  target="_blank" href={tsinShareUrl} />
+            <a className="bds_sqq"   data-cmd="sqq"  title="分享到QQ"  target="_blank" href={qqShareUrl} />
+            <a className="bds_douban"   data-cmd="douban"  title="分享到豆瓣"  target="_blank" href={doubanShareUrl} />
+            <a className="bds_tieba"   data-cmd="tieba"  title="分享到百度贴吧"  target="_blank" href={tiebaShareUrl} />
+            <a className="bds_weixin"   data-cmd="weixin"  title="分享到微信"  target="_blank" href={weixinShareUrl} />
+            <a className="bds_fbook"   data-cmd="fbook"  title="分享到Facebook"  target="_blank" href={facebookShareUrl} />
+            <a className="bds_twi"   data-cmd="twi"  title="分享到Twitter"  target="_blank" href={twitterShareUrl} />
           </div>
           <div className="social-buttons">
             <a id="sharing-phone" href="" onClick={this.showSendToPhone}>
