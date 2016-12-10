@@ -1,41 +1,52 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { stageShape } from './types';
-import _ from 'lodash';
+import { STAGE_TYPE } from './types';
 import CourseProgressRow from './course_progress_row.jsx';
-import color from '../../color';
-
-const styles = {
-  flexHeader: {
-    padding: '5px 10px',
-    margin: '20px 0 0 0',
-    borderRadius: 5,
-    background: color.cyan,
-    color: color.white
-  }
-};
+import StageDetails from './stage_details.jsx';
 
 /**
  * Stage progress component used in level header and course overview.
  */
-const CourseProgress = React.createClass({
+var CourseProgress = React.createClass({
   propTypes: {
-    currentLevelId: React.PropTypes.string,
-    professionalLearningCourse: React.PropTypes.bool,
-    focusAreaPositions: React.PropTypes.arrayOf(React.PropTypes.number),
-    stages: React.PropTypes.arrayOf(stageShape)
+    display: React.PropTypes.oneOf(['dots', 'list']).isRequired,
+    stages: React.PropTypes.arrayOf(STAGE_TYPE)
+  },
+
+  getRow(stage) {
+    if (this.props.display === 'dots') {
+      return <CourseProgressRow stage={stage} key={stage.name} />;
+    } else {
+      return <StageDetails stage={stage} key={stage.name} />;
+    }
   },
 
   render() {
-    const groups = _.groupBy(this.props.stages, stage => (stage.flex_category || 'Content'));
+    var rows = [], stages = this.props.stages;
 
-    let count = 1;
-    const rows = _.map(groups, (stages, group) =>
-      <div key={group}>
-        <h4 style={this.props.professionalLearningCourse ? styles.flexHeader : {display: 'none'}}>{group}</h4>
-        {stages.map(stage => <CourseProgressRow stage={stage} key={stage.name} currentLevelId={this.props.currentLevelId} isFocusArea={this.props.focusAreaPositions.indexOf(count++) > -1} professionalLearningCourse={this.props.professionalLearningCourse} />)}
-      </div>
-    );
+    // Iterate through each stage. When a stage with a flex_category is found,
+    // greedily add stages with the same flex_category until finding a stage
+    // with a different (or no) flex_category.
+    for (var i = 0; i < stages.length; ) {
+
+      if (stages[i].flex_category) {
+        var flexRows = [], previous = stages[i].flex_category;
+        for ( ; i < stages.length && stages[i].flex_category === previous; i++) {
+          flexRows.push(this.getRow(stages[i]));
+        }
+        rows.push(
+          <div className="flex-wrapper" key={i}>
+            <div className="flex-category">
+              <h4>{previous}</h4>
+              {flexRows}
+            </div>
+          </div>
+        );
+      } else {
+        rows.push(this.getRow(stages[i]));
+        i++;
+      }
+    }
 
     return (
       <div className='user-stats-block'>
@@ -46,8 +57,6 @@ const CourseProgress = React.createClass({
 });
 
 export default connect(state => ({
-  currentLevelId: state.currentLevelId,
-  professionalLearningCourse: state.professionalLearningCourse,
-  focusAreaPositions: state.focusAreaPositions,
+  display: state.display,
   stages: state.stages
 }))(CourseProgress);
