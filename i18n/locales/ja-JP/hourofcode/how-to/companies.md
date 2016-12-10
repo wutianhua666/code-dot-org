@@ -6,7 +6,7 @@ title: <%= hoc_s(:title_how_to_companies) %> layout: wide nav: how_to_nav
 
 <%= view :signup_button %>
 
-# Hour of Codeを企業で開催する方法
+# How to bring the Hour of Code to your company
 
 ## Inspire students and volunteer for the Hour of Code
 
@@ -18,71 +18,71 @@ title: <%= hoc_s(:title_how_to_companies) %> layout: wide nav: how_to_nav
 ## Additional ways companies can support the Hour of Code:
 
   * Use our [marketing toolkit](%= localized_file('/files/HourOfCodeInternalMarketingToolkit.pdf') %) to create a communications timeline and share promotional content.
-  * Ask your CEO to send a company-wide email emphasizing the importance of computer science and encouraging employees to spread the word. [サンプルメール](%= resolve_url('/promote/resources#sample-emails') %).
+  * Ask your CEO to send a company-wide email emphasizing the importance of computer science and encouraging employees to spread the word. [See this email](%= resolve_url('/promote/resources#sample-emails') %).
   * Host an Hour of Code Happy Hour with coworkers to try the [tutorials](%= resolve_url('https://code.org/learn') %).
   * Host an Hour of Code event for a local classroom of students or non profits partners to do an Hour of Code at your company’s office. See event how-to guide below.
 
-## Hour of Codeのイベントを、企業で開催する方法
+## How to host an Hour of Code event
 
-## 1) 登録
+## 1) Sign up
 
-  * [<%= campaign_date('short') %>にHour of Code](%= resolve_url('/') %)のイベント開催が決まったら、こちらから登録しましょう。
-  * [あなたのHour of Codeのイベントを宣伝](%= resolve_url('/promote') %)しましょう。
-  * あなたの会社の**ソフトウェアエンジニア**の方々に、地域の学校を訪問してHour of Codeのイベントを手助けすることを奨励する。 [ここから](%= resolve_url('https://code.org/volunteer/engineer') %)登録して、学校とつながることができます。
+  * Register your [Hour of Code](%= resolve_url('/') %) during <%= campaign_date('short') %> event.
+  * Promote your [Hour of Code](%= resolve_url('/promote') %) event and encourage others to host.
+  * Encourage **software engineers** at your company to visit a local classroom to help lead an Hour of Code and inspire students to study computer science. They can [sign up](%= resolve_url('https://code.org/volunteer/engineer') %) to be connected with a classroom.
 
-## 2) 以下の、ビデオを視聴する <iframe width="500" height="255" src="//www.youtube.com/embed/SrnvvWDm73k" frameborder="0" allowfullscreen></iframe>
-## 3) チュートリアルを選択する:
+## 2) Watch this how-to video <iframe width="500" height="255" src="//www.youtube.com/embed/SrnvvWDm73k" frameborder="0" allowfullscreen></iframe>
+## 3) Choose a tutorial:
 
-様々な年齢を対象として、様々なパートナーから提供された[沢山のチュートリアル](%= resolve_url('https://code.org/learn') %)が準備されています。 *新しいチュートリアルは、<%= campaign_date('full') %>までに順次公開されます。*[まずは、現在公開されているチュートリアルを試してみましょう。](%= resolve_url("https://code.org/learn") %)
+We’ll host a variety of [fun, hour-long tutorials](%= resolve_url('https://code.org/learn') %) for participants of all ages, created by a variety of partners. *New tutorials are coming to kick off the Hour of Code before <%= campaign_date('full') %>.* [Try current tutorials.](%= resolve_url("https://code.org/learn") %)
 
-**すべてのHour of Codeのチュートリアルは、以下の様に構成されています：**
+**所有的代碼小時教程:**
 
-  * 準備に必要な時間は、可能な限り短くしています
-  * 自習可能な教材です。全ての生徒は、自分のペースやスキルにあわせて進めることができます。
+  * Require minimal prep-time
+  * Are self-guided - allowing participants to work at their own pace and skill-level
 
 [![](/images/fit-700/tutorials.png)](%= resolve_url('https://code.org/learn') %)
 
-## 4) どんな環境が必要かプランを立てる
+## 4) Plan your technology needs - computers are optional
 
-インターネット接続されたコンピューターがHour of Code に取り組む最良の環境です。 一方で、**必ずしも**一人一台のコンピュータは必要ありません。さらに言えば、コンピュータがない環境でもHour of Codeを行うこともできます。
+一小時程式設計在有網路連線的狀況下會有最佳的體驗。 You **don’t** need a computer for every participant, and can even do the Hour of Code without a computer at all.
 
-  * 事前に、イベントで利用するデバイスでチュートリアルをテストしておきましょう。音声やビデオの確認も忘れずに。
-  * もし、あなたが選択したチュートリアルで音声が必要であれば、ヘッドフォンを生徒に持ってきてもらうことも考えましょう。
-  * **十分な数のデバイスがないですか？**[ペアプログラミング](https://www.youtube.com/watch?v=vgkahOzFH2Q)の出番です。 参加者に、二人一組になってもらいましょう。 さらに、彼らはコンピュータサイエンスが一人だけでやるものではないことに気づくでしょう。
-  * もしコンピュータがない場合、[アンプラグド・オフラインチュートリアル](%= resolve_url('https://code.org/learn') %)を使うことを検討しましょう。 
+  * Test tutorials on the devices you plan to use. Make sure they work properly on browsers with sound and video.
+  * If the tutorial you choose works best with sound you may want to consider providing headphones.
+  * **Don't have enough devices?** Use [pair programming](https://www.youtube.com/watch?v=vgkahOzFH2Q). Have participants partner with each other. 他們也將瞭解到電腦科學是需社交與合作的。
+  * Or try the [unplugged / offline tutorials](%= resolve_url('https://code.org/learn') %). These require no computers and is a great way to get participants up and moving. 
 
 ![](/images/fit-350/group_ipad.jpg)
 
-## 5) 最初に、Hour of Codeの意義を伝えましょう
+## 5) Inspire participants to start your Hour of Code
 
-まず、コンピュータサイエンスがどのように我々の生活にインパクトを与えているのか伝えましょう。 あなたがなぜコンピュータサイエンスの分野で働くことにしたのか、今の会社でどんな仕事をしているのか伝えることも、生徒たちを刺激する一助になるでしょう。
+Kick off your Hour of Code by inspiring participants and discussing how computer science impacts every part of our lives. Share more about what inspired you to pursue computer science and your role at your company.
 
-**以下の映像を見せることも非常に効果的です:**
+**Show an inspirational video:**
 
-  * オリジナルのCode.orgはビル・ゲイツ、マーク・ザッカーバーグ、NBAスターのクリス・ボッシュが出演されているビデオをリリースしています。 (それらは [1 分](https://www.youtube.com/watch?v=qYZF6oIZtfc), [5 分](https://www.youtube.com/watch?v=nKIu9yen5nc), そして[9分](https://www.youtube.com/watch?v=dU1xS07N-FA) バージョンがあります。)
-  * [Hour of Code 2015年度版のビデオ](https://www.youtube.com/watch?v=7L97YMYqLHc)か、<% if @country == 'uk' %> [2013年度版のビデオ](https://www.youtube.com/watch?v=FC5FbmsH4fw)をみる。 <% else %> <% end %>
-  * [アメリカのオバマ大統領が生徒たちにコンピュータサイエンスを学ぶよう呼びかけてる映像もあります。](https://www.youtube.com/watch?v=6XvmhE1J9PY)
-  * その他の映像は[こちら](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfpD8i4Sx7U0y2MccnrNZuP).
+  * 原 Code.org 的揭幕影片，由微軟總裁比爾 · 蓋茨、 臉書創辦人馬克 · 佐伯克和 NBA 明星球員克里斯·波許代言(有 [1 分鐘](https://www.youtube.com/watch?v=qYZF6oIZtfc)、 [5 分鐘](https://www.youtube.com/watch?v=nKIu9yen5nc) 和 [9 分鐘](https://www.youtube.com/watch?v=dU1xS07N-FA) 版本)
+  * [Hour od Code 2013 年揭幕影片](https://www.youtube.com/watch?v=FC5FbmsH4fw)，或者 <% if @country == 'uk' %> = '英國'[Hour od Code 2014 年影片](https://www.youtube.com/watch?v=7L97YMYqLHc) <% else %> [Hour od Code 2014 年影片](https://www.youtube.com/watch?v=7L97YMYqLHc) <% end %>
+  * [美國歐巴馬呼籲所有的學生都要學習電腦科學](https://www.youtube.com/watch?v=6XvmhE1J9PY)
+  * Find more inspirational video [here](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfpD8i4Sx7U0y2MccnrNZuP).
 
-**Hour of Codeを紹介するいくつかの方法:** - テクノロジーが我々の生活にどのようなインパクトを教えているのか、例えばどのように人々の命を救っているのか、人々を助けているのか、そして人々を繋げているのか、説明する。 - もしIT企業で働いている場合、開発に携わっている製品のデモをする。 - もしIT企業ではない場合、どのようにコンピュータを使って仕事を進めているのか、紹介する。 - 会社のソフトウェアエンジニアを招待して、なぜコンピュータサイエンス学ぼうと思ったのか、どんな開発や研究をしているのか話してもらう。 - 女子生徒にどのようにコンピュータサイエンスに興味を持ってもらうかより深く知りたい場合は、[こちら](%= resolve_url('https://code.org/girls') %)をご覧ください。.
+**Ideas to introduce your Hour of Code activity:** - Explain ways technology impacts our lives, with examples both boys and girls will care about (Talk about technology that’s saving lives, helping people, connecting people). - If you are a tech company, demo fun, innovative products your company is working on. - If you aren’t a tech company, discuss ways your company uses technology to solve problems and accomplish goals. - Invite software engineers from your company to speak about why they decided to study computer science and the projects they work on. - See tips for getting girls interested in computer science [here](%= resolve_url('https://code.org/girls') %).
 
-## 6) プログラミング(コードの時間）！
+## 6) Code!
 
-**参加者をガイドする**
+**Direct participants to the activity**
 
-  * 黒板に、チュートリアルへのリンクを書きましょう。リンクは、[こちら](%= resolve_url('https://code.org/learn') %)から取得できます。
-  * 幼い生徒を相手にする場合、チュートリアルページを先に開いておくか、お気に入りに入れておくことをお勧めします。
+  * Write the tutorial link on a whiteboard. Find the link listed on the [information for your selected tutorial](%= resolve_url('https://code.org/learn') %) under the number of participants.
+  * For younger students, load the tutorial page ahead of time or save it as a bookmark.
 
-**もし参加者が困っていたら、以下のように対応してもらっても全く問題ありません。**
+**When participants come across difficulties it's okay to respond:**
 
-  * 私もわからないから、一緒にやってみよう。
-  * コンピュータは、思った通りに動くとは限らないんだよ
-  * プログラミングを学ぶということは、新しい言葉を学ぶことと同じなんだ。すぐにペラペラにはなれないよ。
+  * “I don’t know. Let’s figure this out together.”
+  * “Technology doesn’t always work out the way we want.”
+  * “Learning to program is like learning a new language; you won’t be fluent right away.”
 
-**早く終わってしまった生徒はどうすれば良い？**
+**What to do if someone finishes early?**
 
-  * その他のHour of Codeのチュートリアルを、code.org/learnから試す。
-  * もしくは、まだ終わっていない他の生徒を助けてもらう。
+  * They can try another Hour of Code activity at code.org/learn
+  * Or, ask them to help a friend who are having trouble with the activity.
 
 [col-33]
 
@@ -100,12 +100,12 @@ title: <%= hoc_s(:title_how_to_companies) %> layout: wide nav: how_to_nav
   &nbsp;
 </p>
 
-## 7) クロージング
+## 7) Celebrate
 
-  * [認定書](%= resolve_url('https://code.org/certificates') %)を配布しましょう。
-  * [Hour of Codeをやったよ！](%= resolve_url('/promote/resources#stickers') %)のステッカーを印刷して配布する。
+  * [Print certificates](%= resolve_url('https://code.org/certificates') %) for participants.
+  * [Print "I did an Hour of Code!"](%= resolve_url('/promote/resources#stickers') %) stickers.
   * [Order custom t-shirts](http://blog.code.org/post/132608499493/hour-of-code-shirts-and-more) for your employees.
-  * Hour of Codeのイベントの様子を撮影した写真や映像をソーシャルメディア上で共有しましょう。 #HourOfCodeハッシュタグを使って、 @codeorgに連絡をすれば、あなたの取り組みをハイライトすることができます！
+  * Share photos and videos of your Hour of Code event on social media. Use #HourOfCode and @codeorg so we can highlight your success, too!
 
 [col-33]
 
@@ -129,8 +129,8 @@ title: <%= hoc_s(:title_how_to_companies) %> layout: wide nav: how_to_nav
   &nbsp;
 </p>
 
-## Hour of Codeを終えたら？
+## Hour of Code之後有什麼？
 
-Hour of Codeは、あくまでコンピュータやアプリケーションがどうやって作られているのかを理解する最初の一歩にすぎません。 より深く学びたい生徒には、[こちら](%= resolve_url('https://code.org/learn/beyond') %)を紹介しましょう。.
+Hour of Code只是一段旅途，是瞭解科技如何運作以及如何創造軟體應用程式的第一步。 To continue this journey, [encourage your participants to learn online](%= resolve_url('https://code.org/learn/beyond') %).
 
 <%= view :signup_button %>

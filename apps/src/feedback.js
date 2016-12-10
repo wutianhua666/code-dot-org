@@ -1020,8 +1020,8 @@ FeedbackUtils.prototype.showSimpleDialog = function (Dialog, options) {
           style={textBoxStyle}
           defaultValue={options.promptPrefill} />}
       <DialogButtons
-          confirmText={options.confirmText}
-          cancelText={options.cancelText}
+          confirmText={msg.dialogOK()}
+          cancelText={msg.dialogCancel()}
           cancelButtonClass={options.cancelButtonClass} />
     </div>,
     document.createElement('div'));
@@ -1032,6 +1032,8 @@ FeedbackUtils.prototype.showSimpleDialog = function (Dialog, options) {
     icon: options.hideIcon ? null : this.studioApp_.icon,
     defaultBtnSelector: '#again-button'
   });
+  options.cancelText = msg.dialogCancel();
+  options.confirmText = msg.dialogOK();
 
   var cancelButton = contentDiv.querySelector('#again-button');
   var textBox = contentDiv.querySelector('input');
