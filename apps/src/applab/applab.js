@@ -7,7 +7,6 @@
 /* global dashboard */
 
 'use strict';
-import $ from 'jquery';
 var React = require('react');
 var ReactDOM = require('react-dom');
 var studioApp = require('../StudioApp').singleton;
@@ -29,7 +28,6 @@ var dropletUtils = require('../dropletUtils');
 var dropletConfig = require('./dropletConfig');
 var makerDropletConfig = require('../makerlab/dropletConfig');
 var AppStorage = require('./appStorage');
-var FirebaseStorage = require('./firebaseStorage');
 var constants = require('../constants');
 var experiments = require('../experiments');
 var _ = require('../lodash');
@@ -558,9 +556,6 @@ Applab.init = function (config) {
   config.runButtonClickWrapper = runButtonClickWrapper;
 
   Applab.channelId = config.channel;
-  Applab.firebaseName = config.firebaseName;
-  Applab.firebaseAuthToken = config.firebaseAuthToken;
-  // Applab.storage = window.dashboard.project.useFirebase() ? FirebaseStorage : AppStorage;
   // inlcude channel id in any new relic actions we generate
   logToCloud.setCustomAttribute('channelId', Applab.channelId);
 
@@ -667,8 +662,8 @@ Applab.init = function (config) {
   config.afterClearPuzzle = function () {
     designMode.resetIds();
     Applab.setLevelHtml(config.level.startHtml || '');
-    // Applab.storage.populateTable(level.dataTables, true); // overwrite = true
-    // Applab.storage.populateKeyValue(level.dataProperties, true); // overwrite = true
+    AppStorage.populateTable(level.dataTables, true); // overwrite = true
+    AppStorage.populateKeyValue(level.dataProperties, true); // overwrite = true
     studioApp.resetButtonClick();
   };
 
@@ -710,10 +705,9 @@ Applab.init = function (config) {
   // Provide a way for us to have top pane instructions disabled by default, but
   // able to turn them on.
   config.showInstructionsInTopPane = true;
-  config.noInstructionsWhenCollapsed = true;
 
-  // Applab.storage.populateTable(level.dataTables, false); // overwrite = false
-  // Applab.storage.populateKeyValue(level.dataProperties, false); // overwrite = false
+  AppStorage.populateTable(level.dataTables, false); // overwrite = false
+  AppStorage.populateKeyValue(level.dataProperties, false); // overwrite = false
 
   var onMount = function () {
     studioApp.init(config);
@@ -840,7 +834,7 @@ Applab.reactMountPoint_ = null;
  * Trigger a top-level React render
  */
 Applab.render = function () {
-  var nextProps = Object.assign({}, Applab.reactInitialProps_, {
+  var nextProps = $.extend({}, Applab.reactInitialProps_, {
     isEditingProject: window.dashboard && window.dashboard.project.isEditing(),
     screenIds: designMode.getAllScreenIds(),
     onScreenCreate: designMode.createScreen
@@ -972,7 +966,7 @@ Applab.reset = function (first) {
     jsInterpreterLogger.detach();
   }
 
-  // Applab.storage.resetRecordListener();
+  AppStorage.resetRecordListener();
 
   // Reset the Globals object used to contain program variables:
   Applab.Globals = {};

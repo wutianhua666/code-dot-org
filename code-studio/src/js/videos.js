@@ -15,7 +15,7 @@ videos.createVideoWithFallback = function (parentElement, options, width, height
   if (parentElement) {
     parentElement.append(video);
   }
-  setupVideoFallback(options, width, height);
+  // setupVideoFallback(options, width, height);
   return video;
 };
 
@@ -28,24 +28,36 @@ function onYouTubeIframeAPIReady() {
   // requires there be an iframe#video present on the page
   var player = new YT.Player('video', {
     events: {
-      'onStateChange': function (state) {
-        if (state.data === YT.PlayerState.ENDED) {
-          onVideoEnded();
+        'onReady': function (event) {
+            if (currentVideoOptions) {
+                var size = event.target.f.getBoundingClientRect();
+                addFallbackVideoPlayer(currentVideoOptions, size.width, size.height);
+            }},
+        'onStateChange': function (state) {
+            if (state.data === YT.PlayerState.ENDED) {
+                onVideoEnded();
+            }
+        },
+        'onError': function (error) {
+            if (currentVideoOptions) {
+                var size = error.target.f.getBoundingClientRect();
+                addFallbackVideoPlayer(currentVideoOptions, size.width, size.height);
+            }
         }
-      },
-      'onError': function (error) {
-        if (currentVideoOptions) {
-          var size = error.target.f.getBoundingClientRect();
-          addFallbackVideoPlayer(currentVideoOptions, size.width, size.height);
-        }
-      }
     }
   });
 }
 
 function createVideo(options) {
-  return $('<iframe id="video"/>').addClass('video-player').attr({
-    src: options.src,
+  var dom = $('<video id="video" src="'+options.download+'" crossorigin="anonymous" controls autoplay/>');
+  
+  if(options.subtitles != null && options.subtitles != '' && options.subtitles.length > 0){
+    options.subtitles.forEach(function(subtitle){
+      dom.append('<track kind="subtitles" src="'+subtitle.src+'" srclang="'+subtitle.srclang+'" label="'+subtitle.label+'">')        
+    })
+  }
+  return dom.addClass('video-player').attr({
+    src: 'http:'+options.download,
     scrolling: 'no'
   });
 }
@@ -89,16 +101,16 @@ videos.showVideoDialog = function (options, forceShowVideo) {
   var video = createVideo(options);
   body.append(video);
 
-  var notesDiv = $('<div id="notes-outer"><div id="notes"/></div>');
-  body.append(notesDiv);
-
-  getShowNotes(options.key, function (data) {
-    notesDiv.children('#notes').html(data);
-  }, function () {
-    openVideoTab();
-    body.find('a[href="#notes-outer"]').parent().remove();
-    body.tabs("refresh");
-  });
+  // var notesDiv = $('<div id="notes-outer"><div id="notes"/></div>');
+  // body.append(notesDiv);
+  //
+  // getShowNotes(options.key, function (data) {
+  //   notesDiv.children('#notes').html(data);
+  // }, function () {
+  //   openVideoTab();
+  //   body.find('a[href="#notes-outer"]').parent().remove();
+  //   body.tabs("refresh");
+  // });
 
   var dialog = new Dialog({ body: body, redirect : options.redirect });
   var $div = $(dialog.div);
@@ -158,6 +170,8 @@ videos.showVideoDialog = function (options, forceShowVideo) {
       );
   var nav = $div.find('.ui-tabs-nav');
   nav.append(download);
+  var li = nav.find('[aria-controls="notes-outer"]');
+  li.hide();
 
   // Resize modal to fit constraining dimension.
   var height = $(window).height() * widthRatio,
@@ -182,7 +196,7 @@ videos.showVideoDialog = function (options, forceShowVideo) {
   var divHeight = $div.innerHeight() - nav.outerHeight();
   $(video).height(divHeight);
 
-  notesDiv.height(divHeight);
+  // notesDiv.height(divHeight);
 
   currentVideoOptions = options;
   if (window.YT && window.YT.loaded) {
@@ -217,9 +231,9 @@ videos.showVideoDialog = function (options, forceShowVideo) {
     shouldStillAdd = false;
   });
 
-  setupVideoFallback(options, $div.width(), divHeight, function (){
-    return shouldStillAdd;
-  });
+  // setupVideoFallback(options, $div.width(), divHeight, function (){
+  //   return shouldStillAdd;
+  // });
 };
 
 // Precondition: $('#video') must exist on the DOM before this function is called.
@@ -250,7 +264,7 @@ videos.onYouTubeBlocked = function (youTubeBlockedCallback, videoInfo) {
       // Called when YouTube availability check succeeds.
       function () {
         // Track event in Google Analytics.
-        trackEvent('showvideo', 'startVideoYouTube', key);
+        // trackEvent('showvideo', 'startVideoYouTube', key);
       },
 
       // Called when YouTube availability check fails.
