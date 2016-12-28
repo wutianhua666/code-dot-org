@@ -255,6 +255,10 @@ exports.isInfiniteRecursionError = function (err) {
 // TODO(dave): move this logic to dashboard.
 exports.getPegasusHost = function () {
   switch (window.location.hostname) {
+    case 'studio.istemedu.com':
+      return 'www.istemedu.com';
+    case 'studio2.istemedu.com':
+      return 'www2.istemedu.com';
     case 'studio.code.org':
     case 'learn.code.org':
       return 'code.org';

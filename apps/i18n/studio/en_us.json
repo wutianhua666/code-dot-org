@@ -1,5 +1,7 @@
 {
   "actor": "actor",
+  "add": "add",
+  "ask": "ask",
   "addCharacter": "add a",
   "addCharacterTooltip": "Add a character to the scene.",
   "addGoal": "add goal",
@@ -353,6 +355,7 @@
   "playSoundAlert4": "play alert 4 sound",
   "playSoundApplause": "play applause sound",
   "playSoundRandom": "play random sound",
+  "points": "points",
   "positionOutTopLeft": "to the above top left position",
   "positionOutTopRight": "to the above top right position",
   "positionTopOutLeft": "to the top outside left position",
@@ -408,6 +411,7 @@
   "projectileToaster": "toaster",
   "projectileWaterball": "waterball",
   "reinfFeedbackMsg": "You can press the \"{backButton}\" button to go back to playing your story.",
+  "remove": "remove",
   "removePoints10": "remove 10 points",
   "removePoints50": "remove 50 points",
   "removePoints100": "remove 100 points",

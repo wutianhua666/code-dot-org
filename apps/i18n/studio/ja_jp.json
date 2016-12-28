@@ -1,5 +1,7 @@
 {
   "actor": "角色",
+  "add": "添加",
+  "ask": "詢問",
   "addCharacter": "新增",
   "addCharacterTooltip": "新增角色至場景",
   "addGoal": "add goal",
@@ -353,6 +355,7 @@
   "playSoundAlert4": "播放警報 4 聲音",
   "playSoundApplause": "播放鼓掌聲音",
   "playSoundRandom": "播放隨機的音效",
+  "points": "分數",
   "positionOutTopLeft": "放在左上方頂部位置",
   "positionOutTopRight": "放在右上方頂部位置",
   "positionTopOutLeft": "放在左外側頂部位置",
@@ -408,6 +411,7 @@
   "projectileToaster": "烤麵包機",
   "projectileWaterball": "水球",
   "reinfFeedbackMsg": "你可以按下\"{backButton}\"的按鈕回去玩你的故事。",
+  "remove": "移除",
   "removePoints10": "扣 10 分",
   "removePoints50": "扣 50 分",
   "removePoints100": "扣 100 分",

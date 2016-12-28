@@ -1,5 +1,7 @@
 {
   "actor": "演员",
+  "add": "添加",
+  "ask": "询问",
   "addCharacter": "添加一个",
   "addCharacterTooltip": "将一个角色添加到情景中。",
   "addGoal": "add goal",
@@ -353,6 +355,7 @@
   "playSoundAlert4": "播放警告 4 声",
   "playSoundApplause": "播放掌声",
   "playSoundRandom": "播放随机的音效",
+  "points": "分数",
   "positionOutTopLeft": "到左上角的位置",
   "positionOutTopRight": "到右上角的位置",
   "positionTopOutLeft": "到左外侧顶部的位置",
@@ -408,6 +411,7 @@
   "projectileToaster": "烤面包机",
   "projectileWaterball": "水球",
   "reinfFeedbackMsg": "你可以按下\" {backButton} \" 的按钮，返回你的故事。",
+  "remove": "移除",
   "removePoints10": "扣掉 10 分",
   "removePoints50": "扣掉 50 分",
   "removePoints100": "扣掉 100 分",
