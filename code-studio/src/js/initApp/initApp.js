@@ -72,12 +72,12 @@ window.apps = {
         report.fallbackResponse = appOptions.report.fallback_response;
         report.callback = appOptions.report.callback;
         // Track puzzle attempt event
-        trackEvent('Puzzle', 'Attempt', script_path, report.pass ? 1 : 0);
-        if (report.pass) {
-          trackEvent('Puzzle', 'Success', script_path, report.attempt);
-          timing.stopTiming('Puzzle', script_path, '');
-        }
-        trackEvent('Activity', 'Lines of Code', script_path, report.lines);
+        // trackEvent('Puzzle', 'Attempt', script_path, report.pass ? 1 : 0);
+        // if (report.pass) {
+        //   trackEvent('Puzzle', 'Success', script_path, report.attempt);
+        //   timing.stopTiming('Puzzle', script_path, '');
+        // }
+        // trackEvent('Activity', 'Lines of Code', script_path, report.lines);
         reporting.sendReport(report);
       },
       onComplete: function (response) {

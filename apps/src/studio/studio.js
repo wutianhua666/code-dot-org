@@ -3018,32 +3018,30 @@ Studio.onPuzzleComplete = function () {
 
   Studio.waitingForReport = true;
 
-  var sendReport = function () {
-    studioApp.report({
-      app: 'studio',
-      level: level.id,
-      result: Studio.result === ResultType.SUCCESS,
-      testResult: Studio.testResults,
-      program: encodeURIComponent(program),
-      image: Studio.encodedFeedbackImage,
-      onComplete: Studio.onReportComplete
-    });
-  };
-
-  // don't try it if function is not defined, which should probably only be
-  // true in our test environment
-  if (typeof document.getElementById('svgStudio').toDataURL === 'undefined') {
-    sendReport();
-  } else {
-    document.getElementById('svgStudio').toDataURL("image/jpeg", {
-      callback: function (pngDataUrl) {
-        Studio.feedbackImage = pngDataUrl;
-        Studio.encodedFeedbackImage = encodeURIComponent(Studio.feedbackImage.split(',')[1]);
-
-        sendReport();
-      }
-    });
-  }
+  studioApp.report({
+    app: 'studio',
+    level: level.id,
+    result: Studio.result === ResultType.SUCCESS,
+    testResult: Studio.testResults,
+    program: encodeURIComponent(program),
+    image: Studio.encodedFeedbackImage,
+    onComplete: Studio.onReportComplete
+  });
+  
+  // // don't try it if function is not defined, which should probably only be
+  // // true in our test environment
+  // if (typeof document.getElementById('svgStudio').toDataURL === 'undefined') {
+  //   sendReport();
+  // } else {
+  //   document.getElementById('svgStudio').toDataURL("image/jpeg", {
+  //     callback: function (pngDataUrl) {
+  //       Studio.feedbackImage = pngDataUrl;
+  //       Studio.encodedFeedbackImage = encodeURIComponent(Studio.feedbackImage.split(',')[1]);
+  //
+  //       sendReport();
+  //     }
+  //   });
+  // }
 };
 
 /* Return the frame count for items or projectiles
