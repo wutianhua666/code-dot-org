@@ -156,7 +156,8 @@
     "webpack": "1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-livereload-plugin": "^0.8.1",
-    "which": "1.1.1"
+    "which": "1.1.1",
+    "grunt-sass": "2.0.0"
   },
   "dependencies": {
     "filesaver.js": "0.2.0",

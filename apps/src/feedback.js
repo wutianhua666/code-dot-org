@@ -85,10 +85,10 @@ FeedbackUtils.prototype.displayFeedback = function (options, requiredBlocks,
   options.level = options.level || {};
   options.numTrophies = this.numTrophiesEarned_(options);
 
-  // Tracking event for level newly completed
-  if (options.response && options.response.new_level_completed) {
-    trackEvent('Puzzle', 'Completed', options.response.level_path, options.response.level_attempts);
-  }
+  // // Tracking event for level newly completed
+  // if (options.response && options.response.new_level_completed) {
+  //   trackEvent('Puzzle', 'Completed', options.response.level_path, options.response.level_attempts);
+  // }
 
   var hadShareFailure = (options.response && options.response.share_failure);
   // options.response.level_source is the url that we are sharing; can't
@@ -102,9 +102,9 @@ FeedbackUtils.prototype.displayFeedback = function (options, requiredBlocks,
   var sharingDiv = (canContinue && showingSharing) ? this.createSharingDiv(options) : null;
   var showCode = displayShowCode ? this.getShowCodeElement_(options) : null;
   var shareFailureDiv = hadShareFailure ? this.getShareFailure_(options) : null;
-  if (hadShareFailure) {
-    trackEvent('Share', 'Failure', options.response.share_failure.type);
-  }
+  // if (hadShareFailure) {
+  //   trackEvent('Share', 'Failure', options.response.share_failure.type);
+  // }
   var feedbackBlocks;
   if (this.studioApp_.isUsingBlockly()) {
     feedbackBlocks = new FeedbackBlocks(
@@ -126,7 +126,7 @@ FeedbackUtils.prototype.displayFeedback = function (options, requiredBlocks,
       for (var i = 0; i < options.numTrophies; i++) {
         var concept_name = options.response.trophy_updates[i][0];
         var trophy_name = options.response.trophy_updates[i][1];
-        trackEvent('Trophy', concept_name, trophy_name);
+        // trackEvent('Trophy', concept_name, trophy_name);
       }
     }
     var trophies = this.getTrophiesElement_(options);
@@ -772,11 +772,11 @@ FeedbackUtils.prototype.createSharingDiv = function (options) {
           $.post(options.response.phone_share_url, params)
             .done(function (response) {
               $(submitButton).text("Sent!");
-              trackEvent("SendToPhone", "success");
+              // trackEvent("SendToPhone", "success");
             })
             .fail(function (xhr) {
               $(submitButton).text("Error!");
-              trackEvent("SendToPhone", "error");
+              // trackEvent("SendToPhone", "error");
             });
         });
       } else { // not hidden, hide
