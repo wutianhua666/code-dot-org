@@ -69,7 +69,7 @@ var ShareDialogBody = React.createClass({
     }
 
     var facebookShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + this.props.encodedShareUrl;
-    var twitterShareUrl = "https://twitter.com/intent/tweet?url=" + this.props.encodedShareUrl + "&amp;text=Check%20out%20what%20I%20made%20@codeorg&amp;hashtags=HourOfCode&amp;related=codeorg";
+    var twitterShareUrl = "https://twitter.com/intent/tweet?url=" + this.props.encodedShareUrl + "&amp;text=Check%20out%20what%20I%20made%20@istemedu&amp;hashtags=HourOfCode&amp;related=codeorg";
     var tsinShareUrl = "http://service.weibo.com/share/share.php?url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
     var qzoneShareUrl = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
     var qqShareUrl = "http://connect.qq.com/widget/shareqq/index.html?url=" + this.props.encodedShareUrl + '&title=' + document.getElementsByTagName('title')[0].text;
