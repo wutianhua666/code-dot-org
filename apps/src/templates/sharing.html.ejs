@@ -30,6 +30,9 @@
         </button>
       </a>
     <% } -%>
+    <% if (options.wechatUrl) { -%>
+      <a href='<%= options.wechatUrl %>' target="_blank" class="bds_weixin"></a>
+    <% } -%>
     <% if (!options.onMainPage && !options.disablePrinting) { %>
       <button id="print-button">
         <i class="fa fa-print fa-lg"></i>

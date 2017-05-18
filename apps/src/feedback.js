@@ -710,6 +710,9 @@ FeedbackUtils.prototype.createSharingDiv = function (options) {
     var facebookUrl = "https://www.facebook.com/sharer/sharer.php?u=" +
                       options.response.level_source;
     options.facebookUrl = facebookUrl;
+    
+    var wechatUrl = "http://s.jiathis.com/?webid=weixin&url=" + options.response.level_source;
+    options.wechatUrl = wechatUrl;
   }
 
   options.assetUrl = this.studioApp_.assetUrl;
