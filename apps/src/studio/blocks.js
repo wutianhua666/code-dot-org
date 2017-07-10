@@ -4,59 +4,62 @@
  * Copyright 2014 Code.org
  *
  */
-'use strict';
 /* global Studio */
 
-var studioApp = require('../StudioApp').singleton;
-var msg = require('./locale');
-var sharedFunctionalBlocks = require('../sharedFunctionalBlocks');
-var commonMsg = require('../locale');
-var codegen = require('../codegen');
-var constants = require('./constants');
-var utils = require('../utils');
-var _ = require('lodash');
-var paramLists = require('./paramLists');
+import _ from 'lodash';
+import commonMsg from '../locale';
+import msg from './locale';
+import paramLists from './paramLists';
+import sharedFunctionalBlocks from '../sharedFunctionalBlocks';
+import { singleton as studioApp } from '../StudioApp';
+import { stripQuotes, valueOr } from '../utils';
+import {
+  CardinalDirections,
+  Direction,
+  Emotions,
+  Position,
+  BEHAVIOR_CHASE,
+  BEHAVIOR_FLEE,
+  BEHAVIOR_WANDER,
+  CLICK_VALUE,
+  EMPTY_QUOTES,
+  HIDDEN_VALUE,
+  RANDOM_VALUE,
+  VISIBLE_VALUE
+} from './constants';
 
-var Direction = constants.Direction;
-var Position = constants.Position;
-var Emotions = constants.Emotions;
-
-var RANDOM_VALUE = constants.RANDOM_VALUE;
-var HIDDEN_VALUE = constants.HIDDEN_VALUE;
-var CLICK_VALUE = constants.CLICK_VALUE;
-var VISIBLE_VALUE = constants.VISIBLE_VALUE;
 
 // 9 possible positions in playspace (+ random):
-var POSITION_VALUES = [[msg.positionRandom(), RANDOM_VALUE],
-    [msg.positionTopLeft(), Position.TOPLEFT.toString()],
-    [msg.positionTopCenter(), Position.TOPCENTER.toString()],
-    [msg.positionTopRight(), Position.TOPRIGHT.toString()],
-    [msg.positionMiddleLeft(), Position.MIDDLELEFT.toString()],
-    [msg.positionMiddleCenter(), Position.MIDDLECENTER.toString()],
-    [msg.positionMiddleRight(), Position.MIDDLERIGHT.toString()],
-    [msg.positionBottomLeft(), Position.BOTTOMLEFT.toString()],
-    [msg.positionBottomCenter(), Position.BOTTOMCENTER.toString()],
-    [msg.positionBottomRight(), Position.BOTTOMRIGHT.toString()]];
+var POSITION_VALUES = [[commonMsg.positionRandom(), RANDOM_VALUE],
+    [commonMsg.positionTopLeft(), Position.TOPLEFT.toString()],
+    [commonMsg.positionTopCenter(), Position.TOPCENTER.toString()],
+    [commonMsg.positionTopRight(), Position.TOPRIGHT.toString()],
+    [commonMsg.positionMiddleLeft(), Position.MIDDLELEFT.toString()],
+    [commonMsg.positionMiddleCenter(), Position.MIDDLECENTER.toString()],
+    [commonMsg.positionMiddleRight(), Position.MIDDLERIGHT.toString()],
+    [commonMsg.positionBottomLeft(), Position.BOTTOMLEFT.toString()],
+    [commonMsg.positionBottomCenter(), Position.BOTTOMCENTER.toString()],
+    [commonMsg.positionBottomRight(), Position.BOTTOMRIGHT.toString()]];
 
 // Still a slightly reduced set of 17 out of 25 possible positions (+ random):
-var POSITION_VALUES_EXTENDED = [[msg.positionRandom(), RANDOM_VALUE],
-    [msg.positionOutTopLeft(), Position.OUTTOPLEFT.toString()],
-    [msg.positionOutTopRight(), Position.OUTTOPRIGHT.toString()],
-    [msg.positionTopOutLeft(), Position.TOPOUTLEFT.toString()],
-    [msg.positionTopLeft(), Position.TOPLEFT.toString()],
-    [msg.positionTopCenter(), Position.TOPCENTER.toString()],
-    [msg.positionTopRight(), Position.TOPRIGHT.toString()],
-    [msg.positionTopOutRight(), Position.TOPOUTRIGHT.toString()],
-    [msg.positionMiddleLeft(), Position.MIDDLELEFT.toString()],
-    [msg.positionMiddleCenter(), Position.MIDDLECENTER.toString()],
-    [msg.positionMiddleRight(), Position.MIDDLERIGHT.toString()],
-    [msg.positionBottomOutLeft(), Position.BOTTOMOUTLEFT.toString()],
-    [msg.positionBottomLeft(), Position.BOTTOMLEFT.toString()],
-    [msg.positionBottomCenter(), Position.BOTTOMCENTER.toString()],
-    [msg.positionBottomRight(), Position.BOTTOMRIGHT.toString()],
-    [msg.positionBottomOutRight(), Position.BOTTOMOUTRIGHT.toString()],
-    [msg.positionOutBottomLeft(), Position.OUTBOTTOMLEFT.toString()],
-    [msg.positionOutBottomRight(), Position.OUTBOTTOMRIGHT.toString()]];
+var POSITION_VALUES_EXTENDED = [[commonMsg.positionRandom(), RANDOM_VALUE],
+    [commonMsg.positionOutTopLeft(), Position.OUTTOPLEFT.toString()],
+    [commonMsg.positionOutTopRight(), Position.OUTTOPRIGHT.toString()],
+    [commonMsg.positionTopOutLeft(), Position.TOPOUTLEFT.toString()],
+    [commonMsg.positionTopLeft(), Position.TOPLEFT.toString()],
+    [commonMsg.positionTopCenter(), Position.TOPCENTER.toString()],
+    [commonMsg.positionTopRight(), Position.TOPRIGHT.toString()],
+    [commonMsg.positionTopOutRight(), Position.TOPOUTRIGHT.toString()],
+    [commonMsg.positionMiddleLeft(), Position.MIDDLELEFT.toString()],
+    [commonMsg.positionMiddleCenter(), Position.MIDDLECENTER.toString()],
+    [commonMsg.positionMiddleRight(), Position.MIDDLERIGHT.toString()],
+    [commonMsg.positionBottomOutLeft(), Position.BOTTOMOUTLEFT.toString()],
+    [commonMsg.positionBottomLeft(), Position.BOTTOMLEFT.toString()],
+    [commonMsg.positionBottomCenter(), Position.BOTTOMCENTER.toString()],
+    [commonMsg.positionBottomRight(), Position.BOTTOMRIGHT.toString()],
+    [commonMsg.positionBottomOutRight(), Position.BOTTOMOUTRIGHT.toString()],
+    [commonMsg.positionOutBottomLeft(), Position.OUTBOTTOMLEFT.toString()],
+    [commonMsg.positionOutBottomRight(), Position.OUTBOTTOMRIGHT.toString()]];
 
 var generateSetterCode = function (opts) {
   var value = opts.value || opts.ctx.getTitleValue('VALUE');
@@ -79,8 +82,6 @@ var generateSetterCode = function (opts) {
 // These are set to the default values, but may be overridden
 var spriteCount = 6;
 var projectileCollisions = false;
-var edgeCollisions = false;
-var allowSpritesOutsidePlayspace = false;
 var startAvatars = [];
 
 var customGameLogic = null;
@@ -91,14 +92,6 @@ exports.setSpriteCount = function (blockly, count) {
 
 exports.enableProjectileCollisions = function (blockly) {
   projectileCollisions = true;
-};
-
-exports.enableEdgeCollisions = function (blockly) {
-  edgeCollisions = true;
-};
-
-exports.enableSpritesOutsidePlayspace = function (blockly) {
-  allowSpritesOutsidePlayspace = true;
 };
 
 exports.setStartAvatars = function (avatarList) {
@@ -121,12 +114,39 @@ function spriteNumberTextArray(stringGenerator) {
   });
 }
 
+/**
+ * Get the value of the 'SPRITE' input, converting 1->0 indexed.
+ * @param block
+ * @returns {string}
+ */
+function getSpriteIndex(block, inputName = 'SPRITE') {
+  var index = Blockly.JavaScript.valueToCode(block, inputName,
+      Blockly.JavaScript.ORDER_NONE) || '1';
+  return index + '-1';
+}
+
 // Install extensions to Blockly's language and JavaScript generator.
 exports.install = function (blockly, blockInstallOptions) {
   var skin = blockInstallOptions.skin;
   var isK1 = blockInstallOptions.isK1;
   var generator = blockly.Generator.get('JavaScript');
   blockly.JavaScript = generator;
+
+  // Add some defaults; specifically for those values we expect to be
+  // arrays, so that we can blindly .filter, .map, and .slice them, else
+  // we will fail horribly for any environment that doesn't define a
+  // fully-featured skin
+  skin.activityChoices = valueOr(skin.activityChoices, []);
+  skin.avatarList = valueOr(skin.avatarList, []);
+  skin.backgroundChoices = valueOr(skin.backgroundChoices, []);
+  skin.itemChoices = valueOr(skin.itemChoices, []);
+  skin.mapChoices = valueOr(skin.mapChoices, []);
+  skin.projectileChoices = valueOr(skin.projectileChoices, []);
+  skin.sounds = valueOr(skin.sounds, []);
+  skin.soundChoices = valueOr(skin.soundChoices, []);
+  skin.soundChoicesK1 = valueOr(skin.soundChoicesK1, []);
+  skin.spriteChoices = valueOr(skin.spriteChoices, []);
+
   startAvatars = skin.avatarList.slice(0); // copy avatar list
 
   generator.studio_eventHandlerPrologue = function () {
@@ -157,19 +177,9 @@ exports.install = function (blockly, blockInstallOptions) {
       skin.dropdownThumbnailHeight);
   }
 
-  /**
-   * Get the value of the 'SPRITE' input, converting 1->0 indexed.
-   * @param block
-   * @returns {string}
-   */
-  function getSpriteIndex(block) {
-    var index = Blockly.JavaScript.valueToCode(block, 'SPRITE',
-        Blockly.JavaScript.ORDER_NONE) || '1';
-    return index + '-1';
-  }
-
   // started separating block generation for each block into it's own function
   installVanish(blockly, generator, spriteNumberTextDropdown, startingSpriteImageDropdown, blockInstallOptions);
+  installConditionals(blockly, generator, spriteNumberTextDropdown, startingSpriteImageDropdown, blockInstallOptions);
 
   generator.studio_eventHandlerPrologue = function () {
     return '\n';
@@ -322,12 +332,30 @@ exports.install = function (blockly, blockInstallOptions) {
     init: function () {
       this.setHSV(140, 1.00, 0.74);
       if (spriteCount > 1) {
-        this.appendDummyInput()
-          .appendTitle(spriteNumberTextDropdown(msg.whenSpriteClickedN),
-                       'SPRITE');
+        if (isK1) {
+          this.appendDummyInput()
+            .appendTitle(commonMsg.when())
+            .appendTitle(new blockly.FieldImage(skin.clickIcon))
+            .appendTitle(startingSpriteImageDropdown(), 'SPRITE');
+        } else {
+          this.appendDummyInput()
+            .appendTitle(spriteNumberTextDropdown(msg.whenSpriteClickedN),
+                         'SPRITE');
+        }
       } else {
-        this.appendDummyInput()
-          .appendTitle(msg.whenSpriteClicked());
+        if (isK1) {
+          this.appendDummyInput()
+            .appendTitle(commonMsg.when())
+            .appendTitle(new blockly.FieldImage(skin.clickIcon))
+            .appendTitle(new blockly.FieldImage(
+                skin[startAvatars[0]].dropdownThumbnail,
+                skin.dropdownThumbnailWidth,
+                skin.dropdownThumbnailHeight
+            ));
+        } else {
+          this.appendDummyInput()
+            .appendTitle(msg.whenSpriteClicked());
+        }
       }
       this.setPreviousStatement(false);
       this.setInputsInline(true);
@@ -478,10 +506,8 @@ exports.install = function (blockly, blockInstallOptions) {
           dropdownArray2 = dropdownArray2.concat([this.GROUPINGS[2]]);
           dropdownArray2 = dropdownArray2.concat(this.PROJECTILES);
         }
-        if (edgeCollisions) {
-          dropdownArray2 = dropdownArray2.concat([this.GROUPINGS[3]]);
-          dropdownArray2 = dropdownArray2.concat(this.EDGES);
-        }
+        dropdownArray2 = dropdownArray2.concat([this.GROUPINGS[3]]);
+        dropdownArray2 = dropdownArray2.concat(this.EDGES);
         dropdown2 = new blockly.FieldDropdown(dropdownArray2);
         this.appendDummyInput().appendTitle(dropdown1, 'SPRITE1');
         this.appendDummyInput().appendTitle(dropdown2, 'SPRITE2');
@@ -513,6 +539,27 @@ exports.install = function (blockly, blockInstallOptions) {
        [msg.whenSpriteCollidedWithRightEdge(), 'right']];
 
   generator.studio_whenSpriteCollided = generator.studio_eventHandlerPrologue;
+
+  blockly.Blocks.studio_allowSpritesOutsidePlayspace = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendDummyInput().appendTitle(new blockly.FieldDropdown([
+          [msg.allowActorsToLeaveThePlayspace(), 'true'],
+          [msg.dontAllowActorsToLeaveThePlayspace(), 'false'],
+      ]), 'VALUE');
+
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.allowActorsOutsidePlayspaceTooltip());
+    },
+  };
+
+  generator.studio_allowSpritesOutsidePlayspace = function () {
+    const allowSpritesOutsidePlayspace = this.getTitleValue('VALUE') === 'true';
+    return `Studio.setAllowSpritesOutsidePlayspace('block_id_${this.id}',
+        ${allowSpritesOutsidePlayspace});\n`;
+  };
 
   blockly.Blocks.studio_stop = {
     // Block for stopping the movement of a sprite.
@@ -753,17 +800,11 @@ exports.install = function (blockly, blockInstallOptions) {
   };
 
   blockly.Blocks.studio_setSpritePosition = {
-    // Block for jumping a sprite to different position.
+    // Block for jumping a sprite (selected by dropdown) to different position.
     helpUrl: '',
     init: function () {
-      var dropdown;
-      if (allowSpritesOutsidePlayspace) {
-        dropdown = new blockly.FieldDropdown(this.VALUES_EXTENDED);
-        dropdown.setValue(this.VALUES_EXTENDED[4][1]); // default to top-left
-      } else {
-        dropdown = new blockly.FieldDropdown(this.VALUES);
-        dropdown.setValue(this.VALUES[1][1]); // default to top-left
-      }
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      dropdown.setValue(this.VALUES[1][1]); // default to top-left
       this.setHSV(184, 1.00, 0.74);
       if (spriteCount > 1) {
         this.appendDummyInput()
@@ -788,6 +829,34 @@ exports.install = function (blockly, blockInstallOptions) {
     return generateSetterCode({
       ctx: this,
       extraParams: (this.getTitleValue('SPRITE') || '0'),
+      name: 'setSpritePosition'});
+  };
+
+  blockly.Blocks.studio_setSpritePositionParams = {
+    // Block for jumping a sprite (selected by block param) to different position.
+    helpUrl: '',
+    init: function () {
+      var dropdown = new blockly.FieldDropdown(POSITION_VALUES);
+      dropdown.setValue(POSITION_VALUES[1][1]); // default to top-left
+      this.setHSV(184, 1.00, 0.74);
+
+     this.appendValueInput('SPRITE')
+        .setCheck(blockly.BlockValueType.NUMBER)
+        .appendTitle(msg.setSpriteN({spriteIndex: ''}));
+
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'VALUE');
+      this.setPreviousStatement(true);
+      this.setInputsInline(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpritePositionTooltip());
+    }
+  };
+
+  generator.studio_setSpritePositionParams = function () {
+    return generateSetterCode({
+      ctx: this,
+      extraParams: (getSpriteIndex(this) || '0'),
       name: 'setSpritePosition'});
   };
 
@@ -898,25 +967,50 @@ exports.install = function (blockly, blockInstallOptions) {
       West: {
         letter: commonMsg.directionWestLetter(),
         image: skin.leftArrow,
-        studioValue: Direction.WEST.toString(),
+        studioValue: Direction.WEST,
         tooltip: msg.moveLeftTooltip()
       },
       East: {
         letter: commonMsg.directionEastLetter(),
         image: skin.rightArrow,
-        studioValue: Direction.EAST.toString(),
+        studioValue: Direction.EAST,
         tooltip: msg.moveRightTooltip()
       },
       North: {
         letter: commonMsg.directionNorthLetter(),
         image: skin.upArrow,
-        studioValue: Direction.NORTH.toString(),
+        studioValue: Direction.NORTH,
         tooltip: msg.moveUpTooltip()
       },
-      South: { letter: commonMsg.directionSouthLetter(),
+      South: {
+        letter: commonMsg.directionSouthLetter(),
         image: skin.downArrow,
-        studioValue: Direction.SOUTH.toString(),
+        studioValue: Direction.SOUTH,
         tooltip: msg.moveDownTooltip()
+      },
+      Northwest: {
+        letter: commonMsg.directionNorthwestLetter(),
+        image: skin.upLeftArrow,
+        studioValue: Direction.NORTHWEST,
+        tooltip: msg.moveUpLeftTooltip()
+      },
+      Northeast: {
+        letter: commonMsg.directionNortheastLetter(),
+        image: skin.upRightArrow,
+        studioValue: Direction.NORTHEAST,
+        tooltip: msg.moveUpRightTooltip()
+      },
+      Southwest: {
+        letter: commonMsg.directionSouthwestLetter(),
+        image: skin.downLeftArrow,
+        studioValue: Direction.SOUTHWEST,
+        tooltip: msg.moveDownLeftTooltip()
+      },
+      Southeast: {
+        letter: commonMsg.directionSoutheastLetter(),
+        image: skin.downRightArrow,
+        studioValue: Direction.SOUTHEAST,
+        tooltip: msg.moveDownRightTooltip()
       }
     },
     DISTANCES: [
@@ -925,10 +1019,9 @@ exports.install = function (blockly, blockInstallOptions) {
     ],
     DEFAULT_MOVE_DISTANCE: '100',
     generateBlocksForAllDirections: function () {
-      SimpleMove.generateBlocksForDirection("North");
-      SimpleMove.generateBlocksForDirection("South");
-      SimpleMove.generateBlocksForDirection("West");
-      SimpleMove.generateBlocksForDirection("East");
+      Object.keys(SimpleMove.DIRECTION_CONFIGS).forEach(function (dir) {
+        SimpleMove.generateBlocksForDirection(dir);
+      });
     },
     generateBlocksForDirection: function (direction) {
       generator["studio_move" + direction] = SimpleMove.generateCodeGenerator(direction, true);
@@ -970,9 +1063,16 @@ exports.install = function (blockly, blockInstallOptions) {
 
       return function () {
         var sprite = this.getTitleValue('SPRITE') || '0';
-        var direction = directionConfig.studioValue;
+        var direction = directionConfig.studioValue.toString();
         var methodName = isEventMove ? 'move' : 'moveDistance';
-        var distance = this.getTitleValue('DISTANCE') || SimpleMove.DEFAULT_MOVE_DISTANCE;
+        // For diagonal move blocks, the move distance is longer than normal by
+        // a factor of sqrt(2), so that a move north followed by a move west
+        // takes you to the same spot as a single move northwest.
+        var defaultDistance =
+          CardinalDirections.includes(directionConfig.studioValue) ?
+          SimpleMove.DEFAULT_MOVE_DISTANCE :
+          SimpleMove.DEFAULT_MOVE_DISTANCE * Math.sqrt(2);
+        var distance = this.getTitleValue('DISTANCE') || defaultDistance;
         return 'Studio.' + methodName + '(\'block_id_' + this.id + '\'' +
           ', ' + sprite +
           ', ' + direction +
@@ -1196,19 +1296,19 @@ exports.install = function (blockly, blockInstallOptions) {
   };
 
   function onSoundSelected(soundValue) {
-    var lowercaseSound = utils.stripQuotes(soundValue).toLowerCase().trim();
+    var lowercaseSound = stripQuotes(soundValue).toLowerCase().trim();
 
     if (lowercaseSound === RANDOM_VALUE) {
       return;
     }
-    var skinSoundMetadata = utils.valueOr(skin.soundMetadata, []);
+    var skinSoundMetadata = valueOr(skin.soundMetadata, []);
     var playbackOptions = Object.assign({
       volume: 1.0
     }, _.find(skinSoundMetadata, function (metadata) {
       return metadata.name.toLowerCase().trim() === lowercaseSound;
     }));
 
-    studioApp.playAudio(lowercaseSound, playbackOptions);
+    studioApp().playAudio(lowercaseSound, playbackOptions);
   }
 
   blockly.Blocks.studio_playSound = {
@@ -1333,6 +1433,85 @@ exports.install = function (blockly, blockInstallOptions) {
                 (this.getTitleValue('VALUE') || '1') + '\');\n';
   };
 
+  blockly.Blocks.studio_setScore = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(312, 0.32, 0.62);
+      this.appendValueInput('VALUE')
+        .appendTitle(msg.setScore());
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setScoreTooltip());
+    }
+  };
+
+  generator.studio_setScore = function () {
+    var arg = Blockly.JavaScript.valueToCode(this, 'VALUE',
+       Blockly.JavaScript.ORDER_NONE) || '0';
+   return 'Studio.setScore(' + arg + ');\n';
+  };
+
+  blockly.Blocks.studio_getScore = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput()
+          .appendTitle(msg.score());
+      this.setOutput(true, Blockly.BlockValueType.NUMBER);
+      this.setTooltip(msg.getScoreTooltip());
+    }
+  };
+
+  generator.studio_getScore = function () {
+   return ['Studio.getScore()', 0];
+  };
+
+  blockly.Blocks.studio_addNumPoints = {
+    // Block for adding arbitrary number of points
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendValueInput('NUM')
+        .setCheck(blockly.BlockValueType.NUMBER)
+        .appendTitle(msg.add());
+      this.appendDummyInput().appendTitle(msg.points());
+
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.addPointsTooltip());
+    }
+  };
+
+  generator.studio_addNumPoints = function () {
+    var arg = Blockly.JavaScript.valueToCode(this, 'NUM',
+      Blockly.JavaScript.ORDER_NONE) || '1';
+    return 'Studio.changeScore(\'block_id_' + this.id + '\', \'' +
+        arg + '\');\n';
+  };
+
+  blockly.Blocks.studio_removeNumPoints = {
+    // Block for adding arbitrary number of points
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendValueInput('NUM').appendTitle(msg.remove());
+      this.appendDummyInput().appendTitle(msg.points());
+
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.removePointsTooltip());
+    }
+  };
+
+  generator.studio_removeNumPoints = function () {
+    var arg = Blockly.JavaScript.valueToCode(this, 'NUM',
+      Blockly.JavaScript.ORDER_NONE) || '1';
+    return 'Studio.removePoints(\'block_id_' + this.id + '\', \'' +
+        arg + '\');\n';
+  };
+
   blockly.Blocks.studio_setScoreText = {
     // Block for setting the score text.
     helpUrl: '',
@@ -1350,8 +1529,54 @@ exports.install = function (blockly, blockInstallOptions) {
   generator.studio_setScoreText = function () {
     // Generate JavaScript for setting the score text.
     var arg = Blockly.JavaScript.valueToCode(this, 'TEXT',
-        Blockly.JavaScript.ORDER_NONE) || '';
+        Blockly.JavaScript.ORDER_NONE) || EMPTY_QUOTES;
     return 'Studio.setScoreText(\'block_id_' + this.id + '\', ' + arg + ');\n';
+  };
+
+  blockly.Blocks.studio_addNumPoints = {
+    // Block for adding arbitrary number of points
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendValueInput('NUM')
+        .setCheck(blockly.BlockValueType.NUMBER)
+        .appendTitle(msg.add());
+      this.appendDummyInput().appendTitle(msg.points());
+
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.addPointsTooltip());
+    }
+  };
+
+  generator.studio_addNumPoints = function () {
+    var arg = Blockly.JavaScript.valueToCode(this, 'NUM',
+      Blockly.JavaScript.ORDER_NONE) || '1';
+    return 'Studio.changeScore(\'block_id_' + this.id + '\', \'' +
+        arg + '\');\n';
+  };
+  
+  blockly.Blocks.studio_removeNumPoints = {
+    // Block for adding arbitrary number of points
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendValueInput('NUM').appendTitle(msg.remove());
+      this.appendDummyInput().appendTitle(msg.points());
+
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.removePointsTooltip());
+    }
+  };
+
+  generator.studio_removeNumPoints = function () {
+    var arg = Blockly.JavaScript.valueToCode(this, 'NUM',
+      Blockly.JavaScript.ORDER_NONE) || '1';
+    return 'Studio.removePoints(\'block_id_' + this.id + '\', \'' +
+        arg + '\');\n';
   };
 
   blockly.Blocks.studio_showCoordinates = {
@@ -1547,6 +1772,247 @@ exports.install = function (blockly, blockInstallOptions) {
   };
 
   /**
+   * Blocks for managing a bunch of sprites as a group.
+   */
+  function createSpriteGroupDropdown(createMsg, changeCallback) {
+    const values = skin.spriteChoices.filter(
+        opt => opt[1] !== HIDDEN_VALUE && opt[1] !== RANDOM_VALUE
+    ).map(opt => {
+      const spriteName = stripQuotes(opt[1]);
+      return [createMsg({spriteName: `${msg[spriteName]()}`}), opt[1]];
+    });
+    const dropdown = new blockly.FieldDropdown(values, changeCallback,
+        true /* opt_alwaysCallChangeHandler */);
+    dropdown.setValue(values[0][1]);
+    return dropdown;
+  }
+
+  blockly.Blocks.studio_setSpritesWander = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      const dropdown = createSpriteGroupDropdown(msg.setEverySpriteNameWander);
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpritesWanderTooltip());
+    }
+  };
+
+  generator.studio_setSpritesWander = function () {
+    return generateSetterCode({
+      ctx: this,
+      name: 'setSpritesWander',
+    });
+  };
+
+  blockly.Blocks.studio_setSpritesStop = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      const dropdown = createSpriteGroupDropdown(msg.stopEverySpriteName);
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpritesStopTooltip());
+    }
+  };
+
+  generator.studio_setSpritesStop = function () {
+    return generateSetterCode({
+      ctx: this,
+      name: 'setSpritesStop',
+    });
+  };
+
+  blockly.Blocks.studio_setSpritesChase = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      const dropdown =
+          createSpriteGroupDropdown(msg.setEverySpriteNameChaseActor);
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'VALUE');
+      this.appendValueInput('SPRITE')
+          .setCheck(blockly.BlockValueType.NUMBER);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpritesChaseTooltip());
+    }
+  };
+
+  generator.studio_setSpritesChase = function () {
+    return generateSetterCode({
+      ctx: this,
+      name: 'setSpritesChase',
+      extraParams: getSpriteIndex(this),
+    });
+  };
+
+  blockly.Blocks.studio_setSpritesFlee = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      const dropdown =
+          createSpriteGroupDropdown(msg.setEverySpriteNameFleeActor);
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'VALUE');
+      this.appendValueInput('SPRITE')
+          .setCheck(blockly.BlockValueType.NUMBER);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpritesFleeTooltip());
+    }
+  };
+
+  generator.studio_setSpritesFlee = function () {
+    return generateSetterCode({
+      ctx: this,
+      name: 'setSpritesFlee',
+      extraParams: getSpriteIndex(this),
+    });
+  };
+
+  blockly.Blocks.studio_setSpritesSpeed = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      const dropdown = createSpriteGroupDropdown(msg.setEverySpriteNameSpeed);
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'VALUE');
+      this.appendValueInput('SPEED')
+          .setCheck(blockly.BlockValueType.NUMBER);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpriteSpeedTooltip());
+    }
+  };
+
+  generator.studio_setSpritesSpeed = function () {
+    var speed = blockly.JavaScript.valueToCode(this, 'SPEED',
+      Blockly.JavaScript.ORDER_NONE);
+    return generateSetterCode({
+      ctx: this,
+      name: 'setSpritesSpeed',
+      extraParams: speed,
+    });
+  };
+
+  blockly.Blocks.studio_setSpriteBehavior = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(184, 1.00, 0.74);
+      this.appendDummyInput()
+          .appendTitle(msg.setActor());
+      this.appendValueInput('SPRITE')
+          .setCheck(blockly.BlockValueType.NUMBER);
+      let hasTargetInput = true;
+      const behaviorValues = [
+        [msg.setSpriteChase(), BEHAVIOR_CHASE],
+        [msg.setSpriteFlee(), BEHAVIOR_FLEE],
+        [msg.toWander(), BEHAVIOR_WANDER],
+      ].map(kv => [kv[0], `"${kv[1]}"`]);
+      const behaviorDropdown = new blockly.FieldDropdown(behaviorValues, value => {
+        // Strip the quotes before comparing
+        value = value.substring(1, value.length - 1);
+
+        if (hasTargetInput && value === BEHAVIOR_WANDER) {
+          this.removeInput('TARGETSPRITE');
+          hasTargetInput = false;
+        } else if (!hasTargetInput &&
+            (value === BEHAVIOR_CHASE || value === BEHAVIOR_FLEE)) {
+          this.appendValueInput('TARGETSPRITE')
+              .setCheck(blockly.BlockValueType.NUMBER);
+          hasTargetInput = true;
+        }
+      }, true);
+      this.appendDummyInput()
+          .appendTitle(behaviorDropdown, 'VALUE');
+      this.appendValueInput('TARGETSPRITE')
+          .setCheck(blockly.BlockValueType.NUMBER);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpriteBehaviorTooltip());
+    }
+  };
+
+  generator.studio_setSpriteBehavior = function () {
+    return generateSetterCode({
+      ctx: this,
+      name: 'setSpriteBehavior',
+      extraParams: getSpriteIndex(this) + ', ' + getSpriteIndex(this, 'TARGETSPRITE'),
+    });
+  };
+
+  blockly.Blocks.studio_whenSpriteAndGroupCollide = {
+    // Block to handle event when a sprite collides with any sprite in a group,
+    // and sets a variable to the sprite in the group that was touched
+    helpUrl: '',
+    init: function () {
+      this.setHSV(140, 1.00, 0.74);
+
+      var dropdown1 = spriteNumberTextDropdown(msg.whenSpriteN);
+      var endLabel = new Blockly.FieldLabel();
+      var dropdown2 = createSpriteGroupDropdown(
+          msg.collidesWithAnySpriteName,
+          value => endLabel.setText(msg.toTouchedSpriteName(
+              {spriteName: stripQuotes(value)})));
+      this.appendDummyInput()
+          .appendTitle(dropdown1, 'SPRITE')
+          .appendTitle(dropdown2, 'SPRITENAME');
+      this.appendDummyInput();
+      this.appendValueInput('GROUPMEMBER')
+          .setInline(true)
+          .appendTitle(msg.set());
+      this.appendDummyInput()
+          .setInline(true)
+          .appendTitle(endLabel);
+
+      this.setPreviousStatement(false);
+      this.setNextStatement(true);
+      this.setTooltip(msg.whenSpriteAndGroupCollideTooltip());
+    },
+  };
+
+  generator.studio_whenSpriteAndGroupCollide = function () {
+    var varName = Blockly.JavaScript.valueToCode(this, 'GROUPMEMBER',
+        Blockly.JavaScript.ORDER_NONE);
+    // Sprite index vars need to be 1-indexed, but the callback arg will be
+    // 0-indexed, so add 1.
+    return `${varName} = touchedSpriteIndex + 1;\n`;
+  };
+
+
+  blockly.Blocks.studio_whenSpriteAndGroupCollideSimple = {
+    // Block to handle event when a sprite collides with any sprite in a group
+    helpUrl: '',
+    init: function () {
+      this.setHSV(140, 1.00, 0.74);
+
+      var dropdown1 = spriteNumberTextDropdown(msg.whenSpriteN);
+      var dropdown2 = createSpriteGroupDropdown(msg.collidesWithAnySpriteName);
+      this.appendDummyInput()
+          .appendTitle(dropdown1, 'SPRITE')
+          .appendTitle(dropdown2, 'SPRITENAME');
+
+      this.setPreviousStatement(false);
+      this.setNextStatement(true);
+      this.setTooltip(msg.whenSpriteAndGroupCollideTooltip());
+    },
+  };
+
+  generator.studio_whenSpriteAndGroupCollideSimple = generator.studio_eventHandlerPrologue;
+
+
+  /**
    * setBackground
    */
   blockly.Blocks.studio_setBackground = {
@@ -1615,9 +2081,11 @@ exports.install = function (blockly, blockInstallOptions) {
     helpUrl: '',
     init: function () {
       this.setHSV(312, 0.32, 0.62);
-      this.VALUES = skin.mapChoices;
+      // 'random' is a special value, don't put it in quotes
+      this.VALUES = skin.mapChoices.map(
+          opt => [opt[0], opt[1] === RANDOM_VALUE ? opt[1] : `"${opt[1]}"`]);
 
-      var dropdown = new blockly.FieldDropdown(skin.mapChoices);
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
       this.appendDummyInput().appendTitle(dropdown, 'VALUE');
       // default to first item after random
       dropdown.setValue(skin.mapChoices[1][1]);
@@ -1631,6 +2099,43 @@ exports.install = function (blockly, blockInstallOptions) {
 
   generator.studio_setMap = function () {
     return generateSetterCode({ctx: this, name: 'setMap'});
+  };
+
+  /**
+   * setMapAndColor
+   */
+  blockly.Blocks.studio_setMapAndColor = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(312, 0.32, 0.62);
+      // 'random' is a special value, don't put it in quotes
+      this.VALUES = skin.mapChoices.map(
+          opt => [opt[0], opt[1] === RANDOM_VALUE ? opt[1] : `"${opt[1]}"`]);
+
+      var dropdown = new blockly.FieldDropdown(this.VALUES);
+      this.appendDummyInput().appendTitle(dropdown, 'VALUE');
+      // default to first item after random
+      dropdown.setValue(skin.mapChoices[1][1]);
+
+      this.appendValueInput('COLOR')
+          .setCheck(blockly.BlockValueType.COLOUR)
+          .appendTitle(msg.withColor());
+
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setMapTooltip());
+    }
+  };
+
+  generator.studio_setMapAndColor = function () {
+    var color = blockly.JavaScript.valueToCode(this, 'COLOR',
+        generator.ORDER_NONE) || '\'#000000\'';
+    return generateSetterCode({
+      ctx: this,
+      name: 'setMapAndColor',
+      extraParams: color,
+    });
   };
 
   /**
@@ -1694,9 +2199,9 @@ exports.install = function (blockly, blockInstallOptions) {
   generator.studio_showTitleScreenParams = function () {
     // Generate JavaScript for showing title screen (param version).
     var titleParam = Blockly.JavaScript.valueToCode(this, 'TITLE',
-        Blockly.JavaScript.ORDER_NONE) || '';
+        Blockly.JavaScript.ORDER_NONE) || EMPTY_QUOTES;
     var textParam = Blockly.JavaScript.valueToCode(this, 'TEXT',
-        Blockly.JavaScript.ORDER_NONE) || '';
+        Blockly.JavaScript.ORDER_NONE) || EMPTY_QUOTES;
     return 'Studio.showTitleScreen(\'block_id_' + this.id +
                '\', ' + titleParam + ', ' + textParam + ');\n';
   };
@@ -1761,47 +2266,47 @@ exports.install = function (blockly, blockInstallOptions) {
         this.setTooltip(msg.setSpriteTooltip());
       }
     };
-
-    blockly.Blocks.studio_setSpriteParams = {
-      helpUrl: '',
-      init: function () {
-        this.VALUES = skin.spriteChoices;
-        var dropdown = new blockly.FieldDropdown(skin.spriteChoices);
-        // default to first item after random/hidden
-        dropdown.setValue(skin.spriteChoices[2][1]);
-
-        this.setHSV(312, 0.32, 0.62);
-        this.appendValueInput('SPRITE')
-            .setCheck(blockly.BlockValueType.NUMBER)
-            .appendTitle(msg.setSpriteN({spriteIndex: ''}));
-        this.appendDummyInput()
-            .appendTitle(dropdown, 'VALUE');
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(msg.setSpriteTooltip());
-      }
-    };
-
-    blockly.Blocks.studio_setSpriteParamValue = {
-      helpUrl: '',
-      init: function () {
-        this.setHSV(312, 0.32, 0.62);
-        if (spriteCount > 1) {
-          this.appendDummyInput()
-            .appendTitle(spriteNumberTextDropdown(msg.setSpriteN), 'SPRITE');
-        } else {
-          this.appendDummyInput()
-            .appendTitle(msg.setSprite());
-        }
-        this.appendValueInput('VALUE');
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(msg.setSpriteTooltip());
-      }
-    };
   }
+
+  blockly.Blocks.studio_setSpriteParams = {
+    helpUrl: '',
+    init: function () {
+      this.VALUES = skin.spriteChoices;
+      var dropdown = new blockly.FieldDropdown(skin.spriteChoices);
+      // default to first item after random/hidden
+      dropdown.setValue(skin.spriteChoices[2][1]);
+
+      this.setHSV(312, 0.32, 0.62);
+      this.appendValueInput('SPRITE')
+          .setCheck(blockly.BlockValueType.NUMBER)
+          .appendTitle(msg.setSpriteN({spriteIndex: ''}));
+      this.appendDummyInput()
+          .appendTitle(dropdown, 'VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpriteTooltip());
+    }
+  };
+
+  blockly.Blocks.studio_setSpriteParamValue = {
+    helpUrl: '',
+    init: function () {
+      this.setHSV(312, 0.32, 0.62);
+      if (spriteCount > 1) {
+        this.appendDummyInput()
+          .appendTitle(spriteNumberTextDropdown(msg.setSpriteN), 'SPRITE');
+      } else {
+        this.appendDummyInput()
+          .appendTitle(msg.setSprite());
+      }
+      this.appendValueInput('VALUE');
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(msg.setSpriteTooltip());
+    }
+  };
 
   generator.studio_setSprite = function () {
     var indexString = this.getTitleValue('SPRITE') || '0';
@@ -1939,7 +2444,7 @@ exports.install = function (blockly, blockInstallOptions) {
       }
       if (options.restrictedDialog) {
         var functionArray = [];
-        var numRestrictedSayChoices = 59;
+        var numRestrictedSayChoices = 60;
         for (var i = 0; i < numRestrictedSayChoices; i++) {
           var functionElement = functionArray[i] = [];
           var string = msg["saySpriteChoices_" + i]();
@@ -1997,7 +2502,7 @@ exports.install = function (blockly, blockInstallOptions) {
   generator.studio_saySpriteParams = function () {
     // Generate JavaScript for saying (param version).
     var textParam = Blockly.JavaScript.valueToCode(this, 'TEXT',
-        Blockly.JavaScript.ORDER_NONE) || '';
+        Blockly.JavaScript.ORDER_NONE) || EMPTY_QUOTES;
     return 'Studio.saySprite(\'block_id_' + this.id +
                '\', ' +
                (this.getTitleValue('SPRITE') || '0') + ', ' +
@@ -2008,7 +2513,7 @@ exports.install = function (blockly, blockInstallOptions) {
     // Generate JavaScript for saying (param version).
     var spriteParam = getSpriteIndex(this);
     var textParam = Blockly.JavaScript.valueToCode(this, 'TEXT',
-        Blockly.JavaScript.ORDER_NONE) || '';
+        Blockly.JavaScript.ORDER_NONE) || EMPTY_QUOTES;
     var secondsParam = Blockly.JavaScript.valueToCode(this, 'TIME',
         Blockly.JavaScript.ORDER_NONE) || 1;
     return 'Studio.saySprite(\'block_id_' + this.id + '\', ' +
@@ -2029,11 +2534,22 @@ exports.install = function (blockly, blockInstallOptions) {
         this.appendDummyInput()
           .appendTitle(msg.waitSeconds());
       } else {
-        var dropdown = new blockly.FieldDropdown(this.VALUES);
-        dropdown.setValue(this.VALUES[2][1]);  // default to half second
+        if (isK1) {
+          let dropdown = new blockly.FieldDropdown([1, 2, 3, 4, 5].map(
+                (val) => [val.toString(), (val * 1000).toString()]));
+          dropdown.setValue('1000');
+          this.appendDummyInput()
+            .appendTitle(msg.wait())
+            .appendTitle(new blockly.FieldImage(skin.clockIcon))
+            .appendTitle(dropdown, 'VALUE')
+            .appendTitle(msg.waitSeconds());
+        } else {
+          let dropdown = new blockly.FieldDropdown(this.VALUES);
+          dropdown.setValue(this.VALUES[2][1]);  // default to half second
 
-        this.appendDummyInput()
-          .appendTitle(dropdown, 'VALUE');
+          this.appendDummyInput()
+            .appendTitle(dropdown, 'VALUE');
+        }
       }
       this.setInputsInline(true);
       this.setPreviousStatement(true);
@@ -2388,6 +2904,54 @@ exports.install = function (blockly, blockInstallOptions) {
     var keyCode = Blockly.JavaScript.statementToCode(this, 'ARG1', false) || - 1;
     return 'Studio.isKeyDown(' + keyCode + ');';
   };
+
+  /**
+   * Blocking prompt for user input.
+   */
+  blockly.Blocks.studio_ask = {
+    helpUrl: '',
+    init: function () {
+      var fieldLabel = new Blockly.FieldLabel(Blockly.Msg.VARIABLES_GET_ITEM);
+      // Must be marked EDITABLE so that cloned blocks share the same var name
+      fieldLabel.EDITABLE = true;
+      this.setHSV(312, 0.32, 0.62);
+      this.appendDummyInput().appendTitle(msg.ask());
+      this.setInputsInline(true);
+      this.appendDummyInput()
+        .appendTitle(new Blockly.FieldImage(
+          Blockly.assetUrl('media/quote0.png'), 12, 12))
+        .appendTitle(new Blockly.FieldTextInput(''), 'TEXT')
+        .appendTitle(new Blockly.FieldImage(
+          Blockly.assetUrl('media/quote1.png'), 12, 12));
+      this.appendDummyInput().appendTitle(msg.toSet());
+      this.appendDummyInput()
+        .appendTitle(Blockly.Msg.VARIABLES_GET_TITLE)
+        .appendTitle(Blockly.disableVariableEditing ? fieldLabel
+          : new Blockly.FieldVariable(Blockly.Msg.VARIABLES_GET_ITEM), 'VAR')
+        .appendTitle(Blockly.Msg.VARIABLES_GET_TAIL);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      // This block handles generation of nextConnection descendants (in order
+      // to wrap them in a callback).
+      this.skipNextBlockGeneration = true;
+    },
+    getVars: Blockly.Blocks.variables_get.getVars,
+    renameVar: Blockly.Blocks.variables_get.renameVar,
+    removeVar: Blockly.Blocks.variables_get.removeVar
+  };
+
+  generator.studio_ask = function () {
+    var blockId = `block_id_${this.id}`;
+    var question = this.getTitleValue('TEXT');
+    var varName = Blockly.JavaScript.translateVarName(this.getTitleValue('VAR'));
+
+    var nextBlock = this.nextConnection && this.nextConnection.targetBlock();
+    var nextCode = Blockly.JavaScript.blockToCode(nextBlock, true);
+    nextCode = Blockly.Generator.prefixLines(`${varName} = value;\n${nextCode}`, '  ');
+    var callback = `function (value) {\n${nextCode}}`;
+
+    return `Studio.askForInput("${blockId}", "${question}", ${callback});\n`;
+  };
 };
 
 function installVanish(blockly, generator, spriteNumberTextDropdown, startingSpriteImageDropdown, blockInstallOptions) {
@@ -2415,4 +2979,324 @@ function installVanish(blockly, generator, spriteNumberTextDropdown, startingSpr
     var sprite = this.getTitleValue('SPRITE');
     return 'Studio.vanish(\'block_id_' + this.id + '\', ' + sprite + ');\n';
   };
+}
+
+/**
+ * Add conditional blocks for examining the state of sprites via
+ * callbacks.
+ */
+function installConditionals(blockly, generator, spriteNumberTextDropdown, startingSpriteImageDropdown, blockInstallOptions) {
+
+  /**
+   * Append an Input for selecting the actor to examine. Input can be
+   * either in the form of a dropdown (with both regular and K1
+   * versions) or a value input.
+   */
+  function appendActorSelect(block, dropdown = true) {
+    if (dropdown) {
+      if (spriteCount > 1) {
+        if (blockInstallOptions.isK1) {
+          block
+            .appendDummyInput()
+            .appendTitle(startingSpriteImageDropdown(), 'SPRITE');
+        } else {
+          block
+            .appendDummyInput()
+            .appendTitle(spriteNumberTextDropdown(msg.ifSpriteN), 'SPRITE');
+        }
+      } else {
+        block.appendDummyInput();
+      }
+    } else {
+      block
+        .appendValueInput('SPRITE')
+        .setCheck(blockly.BlockValueType.NUMBER)
+        .appendTitle(msg.ifSpriteN({spriteIndex: ''}));
+    }
+  }
+
+  /**
+   * Given a block init function and a code generation function, create
+   * two versions of a block; one which uses a dropdown and one which
+   * uses a value input to select the actor.
+   */
+  function addRegularAndParamsVersions(name, initFunc, generatorFunc) {
+    let regular = `studio_${name}`;
+    let params = `studio_${name}Params`;
+    let regularElse = `studio_${name}Else`;
+    let paramsElse = `studio_${name}ElseParams`;
+
+    Blockly.Blocks[regular] = {
+      init: function () {
+        initFunc.call(this, true);
+      }
+    };
+
+    Blockly.Blocks[params] = {
+      init: function () {
+        initFunc.call(this, false);
+      }
+    };
+
+    Blockly.Blocks[regularElse] = {
+      init: function () {
+        initFunc.call(this, true, true);
+      }
+    };
+
+    Blockly.Blocks[paramsElse] = {
+      init: function () {
+        initFunc.call(this, false, true);
+      }
+    };
+
+    generator[regular] = function () {
+      return generatorFunc.call(this, true);
+    };
+    generator[params] = function () {
+      return generatorFunc.call(this, false);
+    };
+    generator[regularElse] = function () {
+      return generatorFunc.call(this, true, true);
+    };
+    generator[paramsElse] = function () {
+      return generatorFunc.call(this, false, true);
+    };
+  }
+
+  // Actor Emotion
+  const EMOTION_VALUES = [
+    [msg.getActorHasEmotionNormal(), Emotions.NORMAL.toString()],
+    [msg.getActorHasEmotionHappy(), Emotions.HAPPY.toString()],
+    [msg.getActorHasEmotionAngry(), Emotions.ANGRY.toString()],
+    [msg.getActorHasEmotionSad(), Emotions.SAD.toString()]
+  ];
+
+  const K1_EMOTION_VALUES = [
+    [blockInstallOptions.skin.emotionNormal, Emotions.NORMAL.toString()],
+    [blockInstallOptions.skin.emotionHappy, Emotions.HAPPY.toString()],
+    [blockInstallOptions.skin.emotionAngry, Emotions.ANGRY.toString()],
+    [blockInstallOptions.skin.emotionSad, Emotions.SAD.toString()]
+  ];
+
+  addRegularAndParamsVersions('ifActorHasEmotion', function (actorSelectDropdown, includeElseStatement) {
+    this.setHSV(196, 1.0, 0.79);
+    this.appendDummyInput()
+        .appendTitle('if');
+
+    appendActorSelect(this, actorSelectDropdown);
+
+    if (blockInstallOptions.isK1) {
+      const fieldImageDropdown = new blockly.FieldImageDropdown(K1_EMOTION_VALUES, 34, 34);
+      fieldImageDropdown.setValue(K1_EMOTION_VALUES[0][1]); // default to normal
+      this.appendDummyInput()
+        .appendTitle(msg.emotion())
+        .appendTitle(fieldImageDropdown, 'EMOTION');
+    } else {
+      const dropdown = new blockly.FieldDropdown(EMOTION_VALUES);
+      dropdown.setValue(EMOTION_VALUES[1][1]);  // default to normal
+      this.appendDummyInput()
+        .appendTitle(dropdown, 'EMOTION');
+    }
+
+    this.appendStatementInput('DO');
+
+    if (includeElseStatement) {
+      this.appendStatementInput('ELSE')
+          .appendTitle(msg.elseCode());
+    }
+
+    this.setTooltip(Blockly.Msg.CONTROLS_IF_IF_TOOLTIP);
+
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+  }, function (actorSelectDropdown, includeElseStatement) {
+    let sprite = actorSelectDropdown ? this.getTitleValue('SPRITE') || 0 : getSpriteIndex(this);
+    let emotion = this.getTitleValue('EMOTION');
+    let branch = generator.statementToCode(this, 'DO');
+    let callback = `function (emotion) {\n  if (emotion === ${emotion}) {\n  ${branch}  }\n}`;
+
+    if (includeElseStatement) {
+      let elseBranch = generator.statementToCode(this, 'ELSE');
+      callback = `function (emotion) {\n  if (emotion === ${emotion}) {\n  ${branch}  } else {\n ${elseBranch} }\n}`;
+    }
+
+    return `Studio.getSpriteEmotion('block_id_${this.id}', ${sprite}, ${callback});`;
+  });
+
+  // Actor Position
+  const POSITION_VALUES = [
+    [msg.getActorXPosition(), 'x'],
+    [msg.getActorYPosition(), 'y'],
+  ];
+
+  addRegularAndParamsVersions('ifActorPosition', function (actorSelectDropdown, includeElseStatement) {
+    const OPERATORS = Blockly.RTL ? [
+      ['=', 'EQ'],
+      ['\u2260', 'NEQ'],
+      ['>', 'LT'],
+      ['\u2265', 'LTE'],
+      ['<', 'GT'],
+      ['\u2264', 'GTE']
+    ] : [
+      ['=', 'EQ'],
+      ['\u2260', 'NEQ'],
+      ['<', 'LT'],
+      ['\u2264', 'LTE'],
+      ['>', 'GT'],
+      ['\u2265', 'GTE']
+    ];
+
+    this.setHSV(196, 1.0, 0.79);
+    this.appendDummyInput()
+        .appendTitle('if');
+
+    appendActorSelect(this, actorSelectDropdown);
+
+    this.appendDummyInput()
+      .appendTitle(' ');
+
+    const positionDropdown = new blockly.FieldDropdown(POSITION_VALUES);
+    positionDropdown.setValue(POSITION_VALUES[0][1]);
+
+    this.appendDummyInput()
+      .appendTitle(positionDropdown, 'POSITION');
+
+    const operatorDropdown = new Blockly.FieldDropdown(OPERATORS);
+    this.appendDummyInput()
+      .appendTitle(operatorDropdown, 'OPERATOR');
+
+    this.appendValueInput('COMPARED_VALUE');
+
+    this.appendStatementInput('DO');
+
+    if (includeElseStatement) {
+      this.appendStatementInput('ELSE')
+          .appendTitle(msg.elseCode());
+    }
+
+    this.setTooltip(Blockly.Msg.CONTROLS_IF_IF_TOOLTIP);
+
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+  }, function (actorSelectDropdown, includeElseStatement) {
+    const OPERATORS = {
+      EQ: '==',
+      NEQ: '!=',
+      LT: '<',
+      LTE: '<=',
+      GT: '>',
+      GTE: '>='
+    };
+    let sprite = actorSelectDropdown ? this.getTitleValue('SPRITE') || 0 : getSpriteIndex(this);
+    let position = this.getTitleValue('POSITION');
+    let operator = this.getTitleValue('OPERATOR');
+    let order = (operator === 'EQ' || operator === 'NEQ') ?
+        Blockly.JavaScript.ORDER_EQUALITY : Blockly.JavaScript.ORDER_RELATIONAL;
+    let comparedValue = Blockly.JavaScript.valueToCode(this, 'COMPARED_VALUE', order) || '0';
+    let branch = generator.statementToCode(this, 'DO');
+    let comparison = `${position} ${OPERATORS[operator]} ${comparedValue}`;
+    let callback = `function (x, y) {\n  if (${comparison}) {\n  ${branch}  }\n}`;
+
+    if (includeElseStatement) {
+      let elseBranch = generator.statementToCode(this, 'ELSE');
+      callback = `function (x, y) {\n  if (${comparison}) {\n  ${branch}  } else {\n ${elseBranch} }\n}`;
+    }
+
+    return `Studio.getSpriteXY('block_id_${this.id}', ${sprite}, ${callback});`;
+  });
+
+  // Actor Visibility
+  const VISIBILITY_VALUES = [
+    [msg.getActorHidden(), 'false'],
+    [msg.getActorVisible(), 'true']
+  ];
+
+  addRegularAndParamsVersions('ifActorIsVisible', function (actorSelectDropdown, includeElseStatement) {
+    this.setHSV(196, 1.0, 0.79);
+    this.appendDummyInput()
+        .appendTitle('if');
+
+    appendActorSelect(this, actorSelectDropdown);
+
+    const dropdown = new blockly.FieldDropdown(VISIBILITY_VALUES);
+    dropdown.setValue(VISIBILITY_VALUES[0][1]);
+
+    this.appendDummyInput()
+      .appendTitle(dropdown, 'VISIBILITY');
+
+    this.appendStatementInput('DO');
+
+    if (includeElseStatement) {
+      this.appendStatementInput('ELSE')
+          .appendTitle(msg.elseCode());
+    }
+
+    this.setTooltip(Blockly.Msg.CONTROLS_IF_IF_TOOLTIP);
+
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+  }, function (actorSelectDropdown, includeElseStatement) {
+    let sprite = actorSelectDropdown ? this.getTitleValue('SPRITE') || 0 : getSpriteIndex(this);
+    let visibility = this.getTitleValue('VISIBILITY');
+    let branch = generator.statementToCode(this, 'DO');
+    let callback = `function (visibility) {\n  if (visibility === ${visibility}) {\n  ${branch}  }\n}`;
+
+    if (includeElseStatement) {
+      let elseBranch = generator.statementToCode(this, 'ELSE');
+      callback = `function (visibility) {\n  if (visibility === ${visibility}) {\n  ${branch}  } else {\n ${elseBranch} }\n}`;
+    }
+
+    return `Studio.getSpriteVisibility('block_id_${this.id}', ${sprite}, ${callback});`;
+  });
+
+  // Actor Sprite
+  const SPRITE_VALUES = blockInstallOptions.skin.spriteChoices.filter(choice => {
+    // don't include "random"
+    return choice[1] !== RANDOM_VALUE;
+  }).map(choice => {
+    return [msg.isSet() + ' ' + choice[0], choice[1]];
+  });
+
+  addRegularAndParamsVersions('ifActorIsSprite', function (actorSelectDropdown, includeElseStatement) {
+    this.setHSV(196, 1.0, 0.79);
+    this.appendDummyInput()
+        .appendTitle('if');
+
+    appendActorSelect(this, actorSelectDropdown);
+
+    const dropdown = new blockly.FieldDropdown(SPRITE_VALUES);
+    dropdown.setValue(SPRITE_VALUES[0][1]);
+
+    this.appendDummyInput()
+      .appendTitle(dropdown, 'VALUE');
+
+    this.appendStatementInput('DO');
+
+    if (includeElseStatement) {
+      this.appendStatementInput('ELSE')
+          .appendTitle(msg.elseCode());
+    }
+
+    this.setTooltip(Blockly.Msg.CONTROLS_IF_IF_TOOLTIP);
+
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+  }, function (actorSelectDropdown, includeElseStatement) {
+    let sprite = actorSelectDropdown ? this.getTitleValue('SPRITE') || 0 : getSpriteIndex(this);
+    let value = this.getTitleValue('VALUE');
+    let branch = generator.statementToCode(this, 'DO');
+    let callback = `function (value) {\n  if (value === ${value}) {\n  ${branch}  }\n}`;
+
+    if (includeElseStatement) {
+      let elseBranch = generator.statementToCode(this, 'ELSE');
+      callback = `function (value) {\n  if (value === ${value}) {\n  ${branch}  } else {\n ${elseBranch} }\n}`;
+    }
+
+    return `Studio.getSpriteValue('block_id_${this.id}', ${sprite}, ${callback});`;
+  });
 }
