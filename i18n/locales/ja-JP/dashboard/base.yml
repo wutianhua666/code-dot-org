@@ -1,199 +1,199 @@
 ja:
   errors:
     messages:
-      not_saved: 次の間違い（エラー）を正しく直してください。
-      too_young: このコンテンツには年齢制限があるため、対象年齢に達していない生徒には使用できません。
+      not_saved: 請修正下列錯誤：
+      too_young: 這是大哥哥用的，小朋友不許偷用
   activerecord:
     errors:
       messages:
-        blank: が必要です
+        blank: 必要的
     attributes:
       user:
-        name: 表示名
-        email: Eメール
-        username: ユーザー名
-        password: パスワード
-        password_confirmation: パスワードの確認
-        current_password: 現在のパスワード
-        locale: 言語
-        age: 年齢
+        name: 顯示名稱
+        email: 電子郵件
+        username: '使用者名稱 '
+        password: 密碼
+        password_confirmation: 密碼確認
+        current_password: 目前的密碼：
+        locale: 語言
+        age: 年齡
         gender: 性別
-        edit_header: アカウント詳細を編集する
+        edit_header: 編輯帳戶的詳細資訊
         error:
-          future: 現在までの日付にする
-  hello: 世界の皆さん、こんにちは
-  welcome_back: 'Welcome Back, %{name}'
+          future: 不能在未來
+  hello: 世界您好
+  welcome_back: '歡迎回來，%{name}'
   your_professional_learning_plan: Your Professional Learning Plan
-  see_your_learning_plan: See your learning plan
-  submit: 送信
-  unsubmit: 取り消す
-  previous_page: 前のページ
-  next_page: 次のページ
+  see_your_learning_plan: 查看你的學習計劃
+  submit: 送出
+  unsubmit: 不提交
+  previous_page: '上一頁 '
+  next_page: 下一頁
   next_resource: Next resource
   done_with_module: Done with this Learning Module
-  cancel: キャンセル
-  okay: オッケー
-  heading_x_of_y: '%{heading} (%{y} ページ中 %{x} ページ目)'
+  cancel: 取消
+  okay: OK！
+  heading_x_of_y: '%{heading} (page %{x} of %{y})'
   add_teacher_form:
     code:
-      label: 先生を追加：
-      placeholder: セクション ・ コード (ABCDEF)
-      instructions: '先生によって与えられたコードを入力してください。"ABCDEF"のような 6 文字のコードです。'
-    submit: 先生を追加
+      label: 增加一位老師：
+      placeholder: 單元代碼 (ABCDEF)
+      instructions: '請輸入由您的老師給你的代碼。它是像"ABCDEF"由6個字母所組成的代碼。'
+    submit: 新增教師
   add_hint_form:
-    placeholder: ここにあなたのヒントを入力してください
-    submit: ヒントを追加する
+    placeholder: 請在此處輸入您的提示
+    submit: 新增提示
   appname: Code.org
-  stage: ステージ
-  stage_number: 'ステージ %{number}'
-  puzzle: パズル
-  trophies: トロフィー
-  courses: コース
-  unplugged_activity: コンピューターを使わない活動
-  of: の
-  more: 詳細
-  less: 隠す
-  beta: ベータ版
-  try_hoc: 'ここをクリックしてHour of Codeを試す >>'
-  try_k8intro: コンピュータサイエンスコース （15-25 時間）の入門編
-  k8intro: コンピュータサイエンスコース （15-25 時間）の入門編
-  already_started: 'すでに開始しましたか？ここで再開する >>'
-  demos: 管理者： 全部のデモ
-  continue: 次へ
-  prize: 受賞
-  more_info: もっと見る
+  stage: 階段
+  stage_number: '階段 %{number}'
+  puzzle: 關卡
+  trophies: 獎盃
+  courses: 課程
+  unplugged_activity: 不用電腦的活動
+  of: 的
+  more: 更多
+  less: 更少
+  beta: 測試版
+  try_hoc: '試試看一小時的程式設計課程，請按一下這裡 >>'
+  try_k8intro: 或試試我們提供給幼兒到八年級 (K-8) 的資訊科學簡介課程 (15-25 小時)
+  k8intro: K-8 資訊科學介紹課程 （15-25 小時）
+  already_started: '已經開始了嗎？從這裡繼續 >>'
+  demos: 管理者：所有範例展示
+  continue: '繼續 '
+  prize: 獎勵
+  more_info: 更多的資訊
   auth:
-    sign_in_with: '%{provider} を使用してサインインする'
-    signed_in: サインイン！
-    signed_out: '<a href="%{url}"> Code.org</a> からサインアウトしました'
-    sign_out_of: '%{provider}を使ってサインインしたので、 <a href="%{url}"> ここをクリックして</a> %{provider}からサインアウトする'
-    already_signedup: もうサインアップしましたか？
-    notyet_signedup: まだサインアップしていないですか？
-    google_oauth2: Google アカウント
+    sign_in_with: '以 %{provider}帳號登入'
+    signed_in: 登入!
+    signed_out: '您已登出 <a href="%{url}"> Code.org</a>。'
+    sign_out_of: '您正在使用 %{provider} 登入。 <a href="%{url}">按此登出 %{provider}。</a>'
+    already_signedup: 已經註冊了嗎？
+    notyet_signedup: 還未註冊嗎？
+    google_oauth2: Google帳戶
     twitter: Twitter
     facebook: Facebook
-    windowslive: Microsoft アカウント
-    forgot_password: パスワードをお忘れですか？
-    need_confirmation: 確認Eメールが届かない
-    need_unlock: ロック解除用のEメールが届いていない
+    windowslive: 微軟帳戶
+    forgot_password: 忘記了您的密碼嗎？
+    need_confirmation: 沒有收到確認說明嗎？
+    need_unlock: 沒有收到解鎖說明嗎？
   signup_form:
-    student_count: '%{count} 人の生徒がサインアップ済みです。'
-    teacher_count: '%{count} 人の教師がサインアップ済みです。'
-    overview_student: '登録することで、あなた自身の進み具合を管理できるようになります。あなたのメールアドレスは、主にパスワードを忘れた際、パスワードを再設定するために使用します。もっと詳しいことが知りたいかたは、<a href="http://code.org/privacy">個人情報の取扱いについて</a>をご覧ください。'
-    overview_teacher: 'サインアップすることで、コンピューターサイエンスを教えることができます。<p/>あなたの生徒を追加することで、あなたは彼らの進捗状況を管理することができます。'
-    no_signup_message: '<a target="_blank"href="http://learn.code.org"> いろいろなステージとパズルを見られます。</a>あなたの進捗状況を保存するためにはサインアップしてください'
-    teacher_educator_guide: 教育者のガイドを参照する
-    teacher_pitch: 先生としてCode.orgに登録する
-    teacher_title: 先生としてサインアップする
-    student_pitch: 生徒としてCode.orgにサインアップする
-    student_title: 生徒のサインアップ
+    student_count: '%{count} 學生已經註冊。'
+    teacher_count: '%{count} 教師已經註冊。'
+    overview_student: '註冊一個帳戶可以保存您的進度。您的電子郵件是主要用來讓您登錄和重設密碼。請參閱我們的 <a href="HTTP://code.org/privacy">隱私政策</a>說明以取得更多詳情。'
+    overview_teacher: '通過註冊帳號開始在您的教室裡教資訊科學。 <p/>您將能夠將學生加入，並追蹤他們的學習進度。'
+    no_signup_message: '您可以從 <a target="_blank"href="HTTP://learn.code.org"> 瀏覽各個階段和關卡</a>，但您需要註冊一個帳號來保存您的進度。'
+    teacher_educator_guide: 請參閱教師指南
+    teacher_pitch: 教師註冊Code.org
+    teacher_title: 教師註冊
+    student_pitch: 學生註冊Code.org
+    student_title: 學生註冊
     signup_title: Sign up for Code.org
-    school_name: 学校名 （オプション）
-    school_address: 学校の住所（オプション）
-    address_placeholder: 住所、市、県、郵便番号
-    gender: 性別 （オプション）
-    birthday: 誕生日 (オプション)
-    age: 年齢
-    user_type: あなたは先生ですか？生徒ですか？
-    submit: 入会
-    teacher: あなたは先生ですか？
-    valid_username: 利用可能 ！
-    invalid_username: ユーザー名は 5 文字以上である必要があります。
-    taken_username: ユーザー名は既に使用されています
-    valid_password: 有効なパスワード ！
-    invalid_password: 'パスワードを%d文字以上で入力'
-    mismatch_password: 入力した 2 つのパスワードが一致しません
-    student_terms: "Code.org <a href='http://code.org/tos'> サービス利用規約</a>を守ることに同意します。もしあなたが13歳より年下なら、保護者(ほごしゃ) の方に確認をもらって Code.org のサービスを使用します。あなたが13歳より年下なら、あなたのメールアドレスはこちらからの連絡に使われることはありません。"
-    teacher_terms: "Code.org <a href='http://code.org/tos'> サービス利用規約</a> を守ることに同意します。"
-    additional_information: サインアップを続けるために、私たちはさらにいくつかの情報が必要です。
+    school_name: 學校名稱 （選填）
+    school_address: 學校地址 （選填）
+    address_placeholder: 地址、 城市、 州、 郵遞區號
+    gender: 性別 （選填）
+    birthday: 生日 （選填）
+    age: 年齡
+    user_type: 你是學生還是老師呢？
+    submit: 登錄
+    teacher: 你是老師嗎？
+    valid_username: 可以使用!
+    invalid_username: 使用者名稱必須至少 5 個字元
+    taken_username: 使用者名稱已被使用
+    valid_password: 有效的密碼 ！
+    invalid_password: 密碼必須要 6 個字元以上
+    mismatch_password: 您輸入的兩次密碼不一樣
+    student_terms: "我同意 Code.org <a href='http://code.org/tos'> 的服務條款</a> 的約束。如果我年齡是 13 歲以下的，我通過提交這份表格確認，我有我的父母或法定監護人的許可，使用 Code.org 服務。 <br/>對於使用者 13歲以下，電子郵件地址將不會被存起來，因此我們將不會與他們聯繫。"
+    teacher_terms: "我同意 Code.org <a href='http://code.org/tos'> 的服務條款</a> 的約束。"
+    additional_information: 我們還需要一些其他資訊來完成你的註冊
     user_type_label: Account Type
-    user_type_teacher: 先生
-    user_type_student: 生徒
+    user_type_teacher: 教師
+    user_type_student: '學生 '
   signin_form:
-    title: すでにアカウントをお持ちですか？サインイン
-    login: メールまたはユーザー名
-    password: パスワード
-    remember: ログイン情報を保存する
-    submit: ログイン
+    title: 你已經有一個帳號了嗎？請登入
+    login: 電子郵件或使用者名稱
+    password: 密碼
+    remember: 記住密碼
+    submit: 登入
   signin:
-    try_heading: 登録せずにコーディングに挑戦してみたいですか？
-    try_hoc: 最初に 1 時間分のHour of Codeを試す
-    try_20hours: 20 時間分のコンピュータサイエンス入門編を試す
+    try_heading: 想要在還沒註冊之前就先試試寫程式嗎？
+    try_hoc: 先試試一小時的程式設計課程
+    try_20hours: 試試我們的課程：20 小時介紹資訊科學
   signinsection:
-    welcome: '%{section_name} へようこそ！'
-    name: 名前を選ぶ
-    picture: あなたの秘密の画像を見つけてください
-    words: あなたの秘密の言葉を入力してください
-    login: ログイン
+    welcome: '歡迎來到%{section_name}'
+    name: 選取你的名字
+    picture: 現在找出你的秘密圖片
+    words: 在這裡輸入你的通關密語
+    login: 登入
   password:
     reset_form:
-      title: パスワードをお忘れですか？
-      email: Eメールアドレス
-      submit: パスワードリセット手順の送信
+      title: 忘記了您的密碼嗎？
+      email: 電子郵件地址
+      submit: 將重設密碼的操作說明寄送給我
     change_form:
-      title: パスワードを変更
-      new_password: 新しいパスワード
-      confirm_password: 新しいパスワードを確認
-      submit: パスワードを変更
+      title: 更改您的密碼
+      new_password: 新密碼
+      confirm_password: 確認新密碼
+      submit: 更改我的密碼
   welcome_email:
-    subject: 私のクラス (Code.org) に参加
+    subject: 加入我(在 Code.org)的班級
     body: |
-      下のリンクを使ってコンピュータサイエンスのチュートリアルにサインアップしてください（Code.org から、私とあなたの「先生」として） 。
+      點選下方的連結來報名參加在 Code.org 的資訊科學課程（我會是你的老師）：
       
       %{link}
       
-      チュートリアルは、見た目にも楽しい、シンプル、ガイド付きのゲームのような経験を使用してコンピュータサイエンスの基本的な概念を学びます。ビル ・ ゲイツ氏、マーク・ザッカーバーグ氏、アングリーバード、Plants vs. Zombiesからコードを学ぼう ！:-)
+      這是一個絕對會引起你注意的有趣課程。透過遊戲式的簡易引導，你將學會有關資訊科學的基本概念。快來跟比爾‧蓋茲(Bill Gates)，馬克‧佐克伯(Mark Zuckerberg)、憤怒鳥(Angry Birds)以及植物大戰殭屍(Plants vs. Zombies)一起學習程式設計吧！ :)
       
       %{name}
   follower:
-    invite_sent: 招待状を送信しました
-    added_teacher: '%{name} あなたの先生として追加'
-    registered: ' %{section_name}を登録'
+    invite_sent: 邀請已發送
+    added_teacher: '%{name} 已新增為你的老師'
+    registered: '你已經用 %{section_name}註冊。'
     error:
-      signed_in: 続行する前にサインアウトしてください
-      username_not_found: 'ユーザー名 %{username} が見つかりません'
-      username_in_use: '%{username} は既に取られています、別を選択してください'
-      no_teacher: "'%{teacher_email_or_code}'を使用してサインインした人を見つけられませんでした。ここでサインアップして、もう一度追加してください"
-      section_not_found: "'%{section_code}' というセクションはありません"
-      blank_code: セクションのコードを入力してください
-      cant_join_own_section: 申し訳ありません。あなたはログインすることができません。
+      signed_in: 請先登出後再進行操作
+      username_not_found: '使用者名稱 %{username}找不到'
+      username_in_use: '%{username} 已經被使用了，請重新挑選一個。'
+      no_teacher: '找不到以 %{teacher_email_or_code}註冊的使用者。請邀請他們到這註冊，然後再嘗試新增他們。'
+      section_not_found: '找不到代碼是 %{section_code} 的班級。'
+      blank_code: 請輸入班級代碼
+      cant_join_own_section: 抱歉, 你不能加入你自己的班級
     mail:
       invite_student:
-        subject: '%{teacher_name} のクラスを Code.org で参加 ！%{teacher_name}'
+        subject: '加入%{teacher_name}老師在Code.org的班級。'
       student_disassociated:
-        subject: 'あなたはCode.org の通知: %{student_name} で、学生として関連付けられていません'
+        subject: 'Code.org 通知： %{student_name} 已不再是你的學生。'
   reports:
     error:
-      access_denied: 統計情報へのアクセス権がありません
+      access_denied: 您不能讀取此人的統計資訊
   redeem_prizes:
-    title: '交換賞品： %{name}'
-    provider: 'プロバイダ:'
-    code: 'コード:'
-    redeem_header: 交換するには。
-    donorschoose_register: DonorsChoose.orgに教師として登録
-    donorschoose_project: プロジェクトを投稿
-    donorschoose_how_to: あなたのコードを使用する方法
-    success: あなたの賞金は獲得できました。下のコードを参照する
-    error: あなたの賞金は償還できませんでした、もう一度やり直す
-    error_us_only: 賞金提供をされるのは米国内のユーザーのみに限られています
-    error_not_earned: あなたはまだこの賞を獲得していません。
-    error_already_redeemed: あなたの賞金は既に換金されています
-    no_prizes_available: 申し訳ありませんが、ただ今賞品がありません
-    teacher_info_required: 先生の賞品は学校の名前と住所の情報が必要です。
-    teacher_email_required: 先生の賞品には、確認済みのEメール アドレスが必要です
+    title: '兌換獎品： %{name}'
+    provider: 提供者：
+    code: 程式碼：
+    redeem_header: 兌換：
+    donorschoose_register: 在 DonorsChoose.org 上註冊為教師
+    donorschoose_project: 發佈專案
+    donorschoose_how_to: 如何使用你的程式碼
+    success: 您的獎品兌換成功，請參見下面的代碼。
+    error: 您獲得的獎品無法兌換，請再試一次。
+    error_us_only: 這個獎項只提供給美國使用者。
+    error_not_earned: 你還沒有獲得這一個獎項。
+    error_already_redeemed: 您獲得的獎項已經兌現。
+    no_prizes_available: 很抱歉，目前我們無法提供獎品。
+    teacher_info_required: '教師的獎勵需要學校名稱跟地址:'
+    teacher_email_required: 老師的獎項需要一個已確認電子郵件地址：
     confirm:
-      title: 確認してください
-      "no": いいえ
-      "yes": はい
-      msg: '%{prize_name} 賞金を本当に請求してもいいですか？'
-      msg_student: '注: 賞品は、 1 つの種類のみを選択できます'
-      msg_publicschool: 米国公立学校の教師であることを証明してください
-      msg_visit_website: ウェブサイトに行く
+      title: 請確認
+      "no": 否
+      "yes": 確定
+      msg: '您確定您要領取獎品 %{prize_name} 嗎？'
+      msg_student: 注意：您只能選擇一種獎品。
+      msg_publicschool: 請確認您是美國公立學校的老師。
+      msg_visit_website: 訪問網站
     providers:
       apple_itunes: $10 iTunes Gift Card
       donors_choose: DonorsChoose.org $750 credit
       donors_choose_bonus: DonorsChoose.org $250 credit
-      dropbox: Dropbox の容量 10 GB
+      dropbox: 10 GB 的 Dropbox 空間
       valve: Portal 2 (PC or Mac game download)
       ea_bejeweled: Bejeweled 3 (PC game download)
       ea_fifa: FIFA Soccer 13 (PC game download)
@@ -201,152 +201,153 @@ ja:
       ea_pvz: Plants vs. Zombies (PC game download)
       skype: $10 Skype credit
     msg:
-      choose: 賞品を選択
+      choose: 'Choose a prize:'
       choose_teacher: 'Click on the logo below to claim your prize:'
-      earned: 賞を獲得しました！(米国の学生のみ）
-      not_earned_title: チュートリアルを終了し、賞品を貰いましょう(米国の学生のみ)
-      not_earned: 'コンピュータサイエンスの概念を全て学び、 %{num_trophies}トロフィーと実際の商品を獲得します。10 ドル分の iTunes ギフトカード、10 GB の無料の Dropbox のストレージ、 10 ドル分のSkipeクレジットそしてゲームの無料ダウンロードから選択できます。注：米国内の生徒のみ対象となります。商品はなくなり次第終了いたします'
+      earned: 你贏得了獎品！（僅適用於美國學生）
+      not_earned_title: 完成此課程，並領取獎賞 (僅適用美國學生)
+      not_earned: '學習所有的電腦科學概念，並收集完所有 %{num_trophies}個獎盃，就能獲得真實世界的獎品。您可以選擇 10 GB 的 Dropbox 空間，10美元的Skype儲值或是免費遊戲下載。注意：獎項僅適用於美國學生，並僅有在獎品供應持續的情況下適用。'
       teacher:
-        earned: '15人 以上の学生が % {num_trophies} 個すべてのトロフィーを獲得しました。教師賞を授与します！（米国の教師のみ）'
-        not_earned_title: '(アメリカの教師のみ) クラスを教えて、最大 1000 ドルの<a target="_blank"href="http://DonorsChoose.org">DonorsChoose.org</a>クレジットを獲得'
-        not_earned: '初めてコンピュータサイエンスを経験する教師への報酬です、最大$1,000まで獲得できます。 <a href="http://DonorsChoose.org">DonorsChoose.org</a> K 8 イントロ コースを通して教室をガイドするため <a href="http://DonorsChoose.org"> 支援チャリティー</a> クレジット最大 $1,000 を得ることができます。対象は、正常にすべての 15 の学生 （またはそれ以上） のすべてのチュートリアルを完了、すべての  %{num_trophies} トロフィーを獲得と K 8 イントロ コース全体を通じて、少なくとも 15 人の学生の教室をホストしている必要があります。7 人もしくはそれ以上の生徒のすべてがトロフィーを獲得し、さらにそれがた女子学生だった場合、あなたの報酬は $1,000 <a target="_blank"href="http://DonorsChoose.org"> 支援チャリティー</a> クレジットです。それ以外の場合は、あなたの報酬は <a target="_blank"href="http://DonorsChoose.org"> 支援チャリティー</a> クレジットで 750 ドルです。<a target="_blank"href="http://DonorsChoose.org"> 支援チャリティー</a> クレジットは、米国の公立学校の教師によってのみ使用できます。'
+        earned: '15 個以上的學生已經收集完所有 %{num_trophies} 個獎盃。您贏得了教師獎章！(僅限美國教師)'
+        not_earned_title: '該課程的教學，賺取高達 1,000 美元 <a target="_blank"href="HTTP://DonorsChoose.org"> DonorsChoose.org</a> 學分 (僅限美國教師)'
+        not_earned: |
+          為了獎勵第一次參與電腦科學課程的教師，透過指導一整個班級進行K-8的入門課程，您將有機會贏取由<a href="http://DonorsChoose.org">DonorsChoose.org</a>所提供高達$1000美元的儲值。符合資格的門檻為，你必需指導班上超過15名學生完成K-8的入門課程，所有參加學生必需完成所有課程並獲取所有 %{num_trophies}個獎盃。如果有超過7個女學生獲得所有獎盃，獎勵為$1000美元<a href="http://DonorsChoose.org">DonorsChoose.org</a>儲值。其它情況獎勵為為$750美元<a href="http://DonorsChoose.org">DonorsChoose.org</a>儲值。<a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>儲值僅限美國公立學校教師使用。
+          
+          
         bonus:
-          not_earned_title: '支援チャリティー <a target="_blank"href="http://DonorsChoose.org"> DonorsChoose.org</a> でクレジット $250 を得ることができます。(米国教師のみ)'
-          earned: '%{num_trophies} のトロフィーをすべての収集した学生は７人以上女学生でした。教師賞品を獲得しました ！（米国の教師のみ）'
-          not_earned: '% {Num_trophies} のすべてのトロフィーを獲得したあなたの学生の少なくとも 7 が場合女の子は、あなたの報酬は追加 $250 <a target="_blank"href="http://DonorsChoose.org"> 支援チャリティー</a> クレジット。<a target="_blank"href="http://DonorsChoose.org"> 支援チャリティー</a> クレジットは、米国の公立学校の教師によってのみ使用できます。'
+          not_earned_title: '您仍然可以在<a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>賺取額外$250 credits (僅限美國教師)'
+          earned: '7個或以上的女學生完成全部 %{num_trophies}個獎盃的收集。你已獲得額外的獎章！(僅限美國教師)'
+          not_earned: '如果至少7個以上的女學生完成了所有 %{num_trophies}個獎盃的收集，你將獲得價值$250美元的 <a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>儲值。<a target="_blank" href="http://DonorsChoose.org">DonorsChoose.org</a>儲值僅限美國公立學校教師使用。'
   crud:
-    new_model: '新しい%{model}'
-    show: 表示
-    edit: 編集
-    edit_model: '%{model} を編集'
-    update: 更新のプログラム
-    destroy: 破壊
-    back: 戻る
-    confirm: 間違いありませんか？
-    created: '%{model} はエラーなく、作成されました'
-    updated: '%{model} はエラーなく更新しました'
-    destroyed: '%{model}は正常に削除されました'
-    access_denied: 'この %{model} へのアクセスは不要です'
+    new_model: '新 %{model}'
+    show: '顯示 '
+    edit: 编辑
+    edit_model: '編輯 %{model}'
+    update: '更新 '
+    destroy: 銷毀
+    back: 返回
+    confirm: 是否確定？
+    created: '%{model} 已建立。'
+    updated: '%{model} 已更新。'
+    destroyed: '%{model} 已成功刪除。'
+    access_denied: '你沒有使用 %{model}的權限。'
   nav:
     header:
-      finished_hoc: Hour of Codeを終了
-      sign_in_to_save: 進捗状況を保存するためにサインインする
+      finished_hoc: '我已經完成我的"一小時程式設計"課程。'
+      sign_in_to_save: 登入以儲存進度
       free_play:
-        playlab: アプリを作る
-        artist: 絵を描く
+        playlab: 製作一個App
+        artist: 畫些什麼東西
         calculate: Calculate something
-        applab: アプリを作る
+        applab: 製作一個App
     user:
-      classroom: 先生用ホームページ
-      district_dashboard: 地区のダッシュ ボード
-      label: 'こんにちは  %{username}'
-      stats: コード・スタジオ
-      settings: 私のアカウント
-      prizes: 賞品
-      logout: サインアウト
-      signin: ログイン
-      signup: 入会
-      already_registered: 既にアカウントをお持ちですか?
+      classroom: 教師主頁
+      district_dashboard: 分區訊息
+      label: '嗨 %{username}'
+      stats: 我的進度
+      settings: 我的帳號
+      prizes: 獎項
+      logout: 登出
+      signin: 登入
+      signup: 註冊帳號
+      already_registered: 已經註冊了嗎？
     popup:
-      progress_for_user: '%{name} の進捗状況'
-      progress: あなたの進捗状況
-      lines: 'コードの行の合計:  %{lines}'
-      close: 閉じる
-      mastery: アイデア
-      puzzle_map: ステージ
-      prizes: '%{total_trophies}　トロフィーをあつめて、賞品を獲得しよう ！'
-      prize_earned: 'すべての%{total_trophies}トロフィーを集めました。賞を獲得！'
-      prize_us_only: (米国の学生のみ）
-      prizes_link: 情報をもっと見る
+      progress_for_user: '%{name} 的進度'
+      progress: 您的進度
+      lines: '全部程式碼行數: %{lines}'
+      close: 關閉
+      mastery: 觀念
+      puzzle_map: 階段
+      prizes: '收集所有 %{total_trophies} 個獎盃，並贏取獎品 ！'
+      prize_earned: '所有%{total_trophies}個獎盃都收集完成。恭喜你贏得獎品！（僅限美國公立學校學生）'
+      prize_us_only: （僅適用于美國學生）
+      prizes_link: 更多的資訊
   teacher:
-    answer: 答え
-    for_teachers_only: 先生のみ
+    answer: '答案 '
+    for_teachers_only: 僅限教師
     title:
-      one: あなたの先生：
-      other: 'あなたの先生:'
-    remove: （先生を削除します)
+      one: 你的老師：
+      other: 你的老師：
+    remove: （將教師移除）
     confirm:
-      remove: この教師を削除してもよろしいですか。
+      remove: 你確認要刪除這個老師嗎？
     students:
-      dashboard: 先生用のダッシュボードへ
-    user_not_found: 先生が見つかりませんでした。
-    student_teacher_disassociated: 'あなたの先生として %{teacher_name} を削除しました。'
+      dashboard: 到教師主控台
+    user_not_found: 教師不能被找到
+    student_teacher_disassociated: '你已移除 %{teacher_name} 當作你的教師.'
     panel:
-      answer_viewer: 回答者の画面で表示
-      student: 生徒
-      viewing_solution: 回答を表示
-      try_it_yourself: 試しにやってみてください。
-      section: セクション
-      example: 解答例
-      example_with_number: '解答例 %{solution_number}'
-      submitted_on: '提出日時:'
-      unsubmit: 取り消す
+      answer_viewer: 答案檢視器
+      student: '學生 '
+      viewing_solution: 查看解答
+      try_it_yourself: 自己試試
+      section: 班級
+      example: 解答範例
+      example_with_number: '解答範例 %{solution_number}'
+      submitted_on: 提交時間：
+      unsubmit: 不提交
   user:
-    email_confirm_needed: Eメール アドレスが確認されていません
-    email_confirm_needed_required: 'あなたのメール アドレス %{email} はまだ確認されていません。'
-    email_confirm_wrong_email: メールアドレスをご確認ください
-    email_resend_confirm: 確認手順の再送信
-    new_password_hint: （変更したくない場合は空白のままにしてください）
-    current_password_hint: (変更を確認するためにあなたの現在のパスワードが必要です)
-    delete: アカウントを削除します。
-    delete_text: 下のボタンをクリックすると、あなたのアカウントが削除されます。
-    delete_text_teacher_note: '注意: あなたのアカウントを消してもあなたの生徒のアカウントは消えません。'
-    delete_confirm: このアカウントを削除しますか？
+    email_confirm_needed: 電子郵件地址尚未被確認：
+    email_confirm_needed_required: '您的電子位址 %{email} 尚未被確認：'
+    email_confirm_wrong_email: (錯誤的電子郵件位址？)
+    email_resend_confirm: 重新發送確認說明
+    new_password_hint: （如果你不想變更它就保留空白）
+    current_password_hint: （我們需要您現在的密碼以確認您的更改）
+    delete: 刪除您的帳號
+    delete_text: 按一下下面的按鈕將刪除您的帳號。
+    delete_text_teacher_note: 請注意： 刪除您的帳號並不會刪除您的學生的帳號。
+    delete_confirm: 是否確定要刪除您的帳號？
   user_level:
-    completed: 完了
-    tried: 試してみました
+    completed: 已完成
+    tried: 已試過
   home:
-    title: コード・スタジオ
-    description: Code Studio は Code.org によって作成されたオンラインホームコースです。
-    lines_of_code: '生徒が書いた行数：%{lines_count}'
-    lines_of_code_linebreak: '%{lines_count} 行のコードが<br/> %{students_count} 万人の学生によって書かれました。'
-    all_courses: コース1、2、3の概要
-    lesson_plans: 授業計画
-    signin_message: '既に登録されていますか？% {リンク}'
-    student_reg_link: 学生のサインアップ
-    teacher_reg_link: 教師のサインアップ（登録）
-    signin_directions: |
-      アカウントを使って進捗を確認します<br/>
-      先生はクラス全体の進捗を確認できます。
-    teacher_dashboard: 進捗状況をダッシュ ボードで参照する
-    teacher_student_count_one: 'あなたには %{count} 人の生徒がいます'
-    teacher_student_count: 'あなたには %{count} 人の生徒がいます'
-    teacher_averages: '平均であなたの学生は %{trophy_max}のうち%{trophy_average}　"コンセプト習得"のトロフィーを獲得しています'
-    teacher_print_certificates: このコースを終了した生徒の証明書を印刷する
-    teacher_read_blog: ニュースと更新（教師用ブログ）を読む
-    classroom: あなたの教室
-    student_progress: 進捗状況
-    student_stats: '%{trophy_max}このうち%{trophy_count} の"コンセプト"習得のトロフィーを獲得しました'
-    student_left_off: 再開する
-    student_finished: 'すべてのチュートリアルを完了したら、 別のクラス %{online_link} または %{local_school_link} を選んでください'
-    local_school: 近隣の学校
-    online: オンライン
-    see_details: 詳細はこちら
-    view_course: コースを確認
-    prize_info: '参加者への賞品 (米国公立校のみ): 上限で $1,000 '
-    tryfirst: または、まずは最初に試して、後でサインアップできます
-    trynow: 今すぐ試す
-    add_hint_help: Code.org のチュートリアルに、気の利いたヒントを充実させるため、ご協力をお願いします。
-    20hour_overview: この20時間コースではコンピューターサイエンスの核となる部分やプログラミングの概念について紹介します。このコースは等級K-8用の授業に使われることを考慮して設計されました。しかし、ご安心ください全年齢を対象としており、楽しくプログラミングを学ぶことができます。
-    test_videos_help: 新しいビデオプレイヤーをテストする。
-    try_beta_courses: New! K-5生徒用のベータコースを試してみましょう
-    use_as_teacher: このサイトを教師として使用
-    heading_hoc2014: '<h2>Hour of Code</h2> <h1>全年齢対象</h1>'
-    heading_elementary: '<h2>20時間コース</h2> <h1>全年齢の初心者対象</h1>'
-    heading_apps: '<h2>お楽しみ</h2><h1>みんなの</h1>'
-    heading_tools: 次のステップへの準備はできましたか? JavaScript ツール （高校生向け）
-    heading_legacy: '<h1>全年齢対象のコース</h1>'
-    your_gallery: ギャラリー
-    no_primary_course: コード スタジオ でコースを見る
-    choose_next_course: Code Studio コースを以下のリストから一つ試す
-    print_certificate: 証書を印刷
-    announcement_title: Announcements
-    announcement_view_all: View all
+    title: 程式工作室
+    description: Code.org 建立的所有線上課程，通通放在 Code Studio 中。
+    lines_of_code: '%{lines_count} 行程式碼由學生撰寫'
+    lines_of_code_linebreak: '由 %{students_count} 百萬學生所撰寫的 <br/>%{lines_count} 行程式碼'
+    all_courses: 課程 1, 2, 及 3 導論
+    lesson_plans: 課程計畫
+    signin_message: '已經註冊了? %{link}'
+    student_reg_link: 學生登入
+    teacher_reg_link: 教師登入
+    signin_directions: '使用帳戶來追蹤進度。 <br/>教師，追蹤您的整個班級。'
+    teacher_dashboard: 瀏覽進度表
+    teacher_student_count_one: '您有 %{count} 位學生.'
+    teacher_student_count: '您有 %{count} 位學生.'
+    teacher_averages: '你的學生平均下來獲得了 %{trophy_average}/%{trophy_max} "概念通達"獎盃。 '
+    teacher_print_certificates: 為完成此課程的學生列印證書
+    teacher_read_blog: 在Educator Blog閱讀我們的最新資訊
+    classroom: 您的教室
+    student_progress: 您的學習進度
+    student_stats: '你已經獲得 %{trophy_count}/%{trophy_max} "概念通達"獎盃'
+    student_left_off: 你離開的地方：
+    student_finished: '你已經完成所有練習課程，挑戰另外的 %{online_link} 或到% {local_school_link} '
+    local_school: 當地的學校
+    online: 在線上
+    see_details: 查看詳細資訊
+    view_course: 觀看課程
+    prize_info: 參加獎 (僅限美國公立學校教師)：至多$1,000元美金的獎金。
+    tryfirst: 或者，你也可以先試試，之後再 註冊：
+    trynow: 快來試試
+    add_hint_help: 請協助我們添加小提示到Code.org 的教程
+    20hour_overview: 這 20 小時課程將介紹電腦科學和程式設計的核心概念。本課程是設計給 K-8 年級的學生在教室內使用，但對所有年齡的人來說，也能把本課程當成興趣來學習。
+    test_videos_help: 在您的學校測試我們新的影片
+    try_beta_courses: 新課程！請嘗試我們設計給五年級學生的 Beta 測試版課程。
+    use_as_teacher: 使用這網站當一名教師
+    heading_hoc2014: '<h2>一小時的程式設計課程</h2><h1>對所有年齡</h1>'
+    heading_elementary: '<h2>20 小時課程</h2><h1>初學者(所有年齡)</h1>'
+    heading_apps: '<h2>樂趣</h2><h1>每個人</h1>'
+    heading_tools: '<h2>為下一步的準備好了嗎？</h2><h1>高中的 JavaScript 工具</h1>'
+    heading_legacy: '<h2>我們的一般課程</h2>適合<h1>所有年齡</h1>'
+    your_gallery: 相片圖庫
+    no_primary_course: 試試在 Code Studio 參加一個課程
+    choose_next_course: 從下方課程中選擇一個進行體驗
+    print_certificate: 列印證書
+    announcement_title: 公告
+    announcement_view_all: 全部查看
     announcement_message: |-
       Want to help us test a new feature? We know it’s important to encourage students to iterate and experiment, so we'll be adding an "unused code" feature to allow students to run their code even when there are unattached blocks. We welcome your feedback before we publicly release the feature.
     announcement_button: Test the feature
     announcement_petition: "As a teacher, you're leading the way in a movement to give every student in every school the opportunity to learn computer science. Now, it's time to let your representatives hear from you. This week, education leaders, 28 governors, and CEOs of America's largest companies joined together in an open letter asking the U.S. Congress to fund K-12 computer science education."
-    announcement_petition_button: Add your name
+    announcement_petition_button: 新增你的名字
   move_students:
     new_section_dne: 'Sorry, but section %{new_section_code} does not exist. Please enter a different section code.'
     section_code_not_entered: Please provide current_section_code.
@@ -359,320 +360,318 @@ ja:
     all_students_must_be_in_current_section: All the students must currently be enrolled in your section.
     already_enrolled_in_new_section: You cannot move these students because this teacher already has them in another section.
   share:
-    title: コード スタジオで学ぶ
-    description: 誰もがコンピュータサイエンスを学ぶことができます。ゲーム、アプリ、アートをコードで作ろう。
-    try_hour_of_code: アワーオブコードを試してみよう！
+    title: 在程式碼工作室中學習
+    description: 任何人都可以學習電腦科學並透過程式碼來設計遊戲、app及藝術創作。
+    try_hour_of_code: 試試看做一個「一小時的程式課」!
   gender:
     male: 男性
     female: 女性
-    none: 答えたくない
+    none: 不願回答
   user_type:
-    student: 生徒
-    teacher: 先生
+    student: '學生 '
+    teacher: 教師
   footer:
-    thank_you: '私たちの <a href="https://code.org/about/donors"> ドナー</a>、<a href="https://code.org/about/partners"> パートナー</a>、 <a href="https://code.org/about/team"> チーム</a>、ビデオ キャスト、<a href="https://code.org/about/advisors"> アドバイザー</a> にコード スタジオのサポートを感謝しています。'
-    help_from_html: このチュートリアルの作成には Google, Microsoft, Facebook, Twitter のエンジニアが協力しています。
-    help_from_html_old: Google・Microsoft・Facebook・Twitterのエンジニアがこのチュートリアルを作るのを手伝いました。
-    art_from_html: 'Minecraft&#8482; &copy; %{current_year} Microsoft. All Rights Reserved.<br />Star Wars&#8482; &copy; %{current_year} Disney and Lucasfilm. All Rights Reserved.<br />Frozen&#8482; &copy; %{current_year} Disney. All Rights Reserved.<br />Ice Age&#8482; &copy; %{current_year} 20th Century Fox. All Rights Reserved.<br />Angry Birds&#8482; &copy; 2009-%{current_year} Rovio Entertainment Ltd. All Rights Reserved.<br />Plants vs. Zombies&#8482; &copy; %{current_year} Electronic Arts Inc. All Rights Reserved.<br />The Amazing World of Gumball is trademark and &copy; 2015 Cartoon Network.'
-    art_from_html_old: 'Minecraft&#8482; &copy; %{current_year} Microsoft. All Rights Reserved.<br />Star Wars&#8482; &copy; %{current_year} Disney and Lucasfilm. All Rights Reserved.<br />Frozen&#8482; &copy; %{current_year} Disney. All Rights Reserved.<br />Ice Age&#8482; &copy; %{current_year} 20th Century Fox. All Rights Reserved.<br />Angry Birds&#8482; &copy; 2009-%{current_year} Rovio Entertainment Ltd. All Rights Reserved.<br />Plants vs. Zombies&#8482; &copy; %{current_year} Electronic Arts Inc. All Rights Reserved.<br />The Amazing World of Gumball is trademark and &copy; 2015 Cartoon Network.'
-    code_from_html: 'Code.org は <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1-standalone.html"> GNU LGPL 2.1</a> ライセンスのp5.play を使用しています｡'
-    powered_by_aws: Powered by Amazon Web Services
-    trademark: '&copy; Code.org, %{current_year}. Code.org&reg;, the CODE logo　と　Hour of Code&reg; は Code.org の商標です'
-    copyright: 著作権
-    more: それ以上
-    feedback: フィードバックする
-    translate: あなたの言語の翻訳にご協力ください
-    support: サポート
+    thank_you: '我們感謝 <a href="Https://code.org/about/donors"> 捐助者</a>、 <a href="Https://code.org/about/partners"> 合作夥伴</a>、 我們的 <a href="Https://code.org/about/team"> 擴展的團隊</a>，我們視頻的演員陣容，我們的 <a href="Https://code.org/about/advisors"> 教育顧問</a> 的支援，建立Code工作室'
+    help_from_html: 從Google, Microsoft, Facebook, and Twitter的工程師在幫忙創建本教程。
+    help_from_html_old: 來自google 微軟 Fb及推特的工程師的協助創造了這些元素
+    art_from_html: '當個創世神 Minecraft &#8482; &copy; %{current_year} Microsoft 著作權所有，並保留一切權利。<br />星際大戰 Star Wars &#8482; &copy; %{current_year} 迪士尼和盧卡斯影業著作權所有，並保留一切權利。<br />冰雪奇緣 Frozen &#8482; &copy; %{current_year} 迪士尼著作權所有，並保留一切權利。<br />冰原歷險記 Ice Age &#8482; &copy; %{current_year} 二十世紀福斯影片公司著作權所有，並保留一切權利。<br />憤怒鳥 Angry Birds &#8482; &copy; 2009年 %{current_year} Rovio 娛樂有限公司著作權所有，並保留一切權利。<br />植物大戰僵屍 Plants vs. Zombies &#8482; &copy; %{current_year} 美商藝電著作權所有，並保留一切權利。<br />阿甘妙世界 The Amazing World of Gumball 商標是 &copy; 2015年卡通頻道著作權所有，並保留一切權利。'
+    art_from_html_old: '當個創世神 Minecraft &#8482; &copy; %{current_year} Microsoft 著作權所有，並保留一切權利。星際大戰 Star Wars &#8482; &copy; %{current_year} 迪士尼和盧卡斯影業著作權所有，並保留一切權利。冰雪奇緣 Frozen &#8482; &copy; %{current_year} 迪士尼著作權所有，並保留一切權利。冰原歷險記 Ice Age &#8482; &copy; %{current_year} 二十世紀福斯影片公司著作權所有，並保留一切權利。憤怒鳥 Angry Birds &#8482; &copy; 2009年 %{current_year} Rovio 娛樂有限公司著作權所有，並保留一切權利。植物大戰僵屍 Plants vs. Zombies &#8482; &copy; %{current_year} 美商藝電著作權所有，並保留一切權利。阿甘妙世界 The Amazing World of Gumball 商標是 &copy; 2015年卡通頻道著作權所有，並保留一切權利。'
+    code_from_html: 'Code.org uses p5.play, which is licensed under <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1-standalone.html">the GNU LGPL 2.1</a>.'
+    powered_by_aws: 由亞馬遜網路服務系統提供服務
+    trademark: '&copy; Code.org, %{current_year}. Code.org&reg;, CODE 標誌以及 Hour of Code&reg; 都是 Code.org.的注冊商標。'
+    copyright: 版權所有
+    more: 更多
+    feedback: 提供回饋
+    translate: 幫我們翻譯成您國家的語言
+    support: 支援
     support_url: http://support.code.org
-    tos_short: 利用規約
-    tos: 利用規約
-    privacy: プライバシー ポリシー
-    secure: 保護されたバージョン
-    report_abuse: 不正を報告
-    built_on_code_studio: コードスタジオに構築された
-    make_my_own_app: 自分のアプリを作る
-    how_it_works: 動作の説明
-    try_hour_of_code: アワーオブコードを試してみよう！
+    tos_short: 服務條款
+    tos: 服務條款
+    privacy: 隱私權政策
+    secure: 安全版本
+    report_abuse: 濫用回報
+    built_on_code_studio: 在 Code Studio 上建立
+    make_my_own_app: 製作自己的 app
+    how_it_works: 它是如何運作的
+    try_hour_of_code: 試試看做一個「一小時的程式課」!
   reference_area:
-    title: 助けが必要ですか？
-    subtitle: ビデオやヒントを見る
-    teacher: 解答を参照する
-    auth_error: 解答を見る権限がありません
-    submit: 制作者の居住地を変更する
-    direction: 最初の方向 (度)
+    title: 需要幫忙嗎？
+    subtitle: 看看這些影片和提示
+    teacher: 參考解決方案
+    auth_error: 您無權查看該解決方案。
+    submit: 更新畫家的位置
+    direction: 開始方向(以度為單位)
   video:
-    tab: 動画
-    notes: 動画の代わりにノートを見る
-    notes_coming_soon: このビデオのノートがもうすぐ公開されます
-    autoplay_option: 動画の自動再生
-    download: ビデオのダウンロード
+    tab: 影片
+    notes: 看不到影片嗎？顯示文字說明。
+    notes_coming_soon: 影片說明即將完成。
+    autoplay_option: 自動播放影片
+    download: 下載影片
   compatibility:
     upgrade:
       unsupported_message: "Your browser is not supported. Please upgrade your browser to <a href='%{supported_browsers_url}', target='_blank'>one of our supported browsers</a>. You can try viewing the page, but expect functionality to be broken."
       ie_message: Code.org will soon remove support for Internet Explorer 8, 9, and 10. Please upgrade to a modern browser.
       ie_message_csedweek: CSEdWeek.org will soon remove support for Internet Explorer 8, 9, and 10. Please upgrade to a modern browser.
-      link: もっと詳しく知る
-  slow_loading: 通常よりも長くかかっている...
-  try_reloading: ページを再読み込みする
-  next_stage: 完成 ！次のステージへ
-  download_pdf: オープン レッスン ・ プラン
-  lesson_plan: 学習計画
-  view_lesson_plan: レッスン・プランを見る
-  pdf_download: PDF をダウンロード
-  download_coming_soon: 間もなく、ダウンロードできる教材が利用できるようになります。
-  video_coming_soon: 間もなく、ビデオを視聴できるようになります。
-  not_started: 学生は、まだこのレベルを行っていません。
+      link: 瞭解更多資訊
+  slow_loading: 請再等等，這次讀取的時間比較久一點.......
+  try_reloading: 請嘗試重新載入網頁
+  next_stage: 完成 ！繼續邁向下一個階段
+  download_pdf: 開啟教學計畫
+  lesson_plan: 教案
+  view_lesson_plan: 檢視教案
+  pdf_download: 下載 PDF
+  download_coming_soon: 可下載的活動內容也即將完成。
+  video_coming_soon: 影片即將推出 ！
+  not_started: 學生尚未試過這個關卡。
   share_code:
-    title: 「実行」をクリックして私のプログラムが動くところを見てください
-    bounce_og_title: 私が作った Bounce Game を試してみてください
-    flappy_og_title: わたしのFlappyゲームをみてください！
-    studio_og_title: 私が作った Play Lab のアプリを試してみてください
-    check_out_what_i_made: 私の作品を試してみてください
-    og_description: Code.org でコード（プログラム）を書きました
-    phone_number_not_allowed: 電話番号が書かれているようです。テキストを変更してください。
-    address_not_allowed: 住所が書かれているようです。テキストを変更してください。
-    email_not_allowed: メールアドレスが書かれているようです。テキストを変更してください。
-    profanity_not_allowed: 不適切な言葉が書かれているようです。テキストを変更してください。
+    title: '按下"執行"來看看我的程式如何運作'
+    bounce_og_title: 看看我的彈跳遊戲
+    flappy_og_title: 看看我的 Flappy 遊戲
+    studio_og_title: 看看我的遊玩實驗室 App
+    check_out_what_i_made: 看看我做了什麼
+    og_description: 我用 Code.org寫了自己的程式碼
+    phone_number_not_allowed: 看起來裡面有一組電話號碼。請試著改變文字。
+    address_not_allowed: 看起來裡面有一組地址。請試著改變文字。
+    email_not_allowed: 看起來裡面有一組電子郵件地址。請試著改變文字。
+    profanity_not_allowed: 看起來裡面有一些不雅的文字。請試著改變文字。
   builder:
-    created: 新しいスクリプトを作成しました
-    destroyed: スクリプトを破棄しました
-    manage: ビルドレベル
-    view: 表示
-    back: スクリプトに戻る
-    success: ブロックの編集に成功しました。
+    created: 您建立了一個新的腳本。
+    destroyed: 你刪除了一個腳本。
+    manage: 建立關卡
+    view: 檢視
+    back: 返回腳本
+    success: 你已經成功地編輯程式積木
     level:
-      create: 新しいレベルを作成
-      current: 現在のレベル
-      unused: 未使用のレベル
+      create: 建立新關卡
+      current: 目前的關卡
+      unused: 未使用的關卡
   upsell:
     applab:
-      title: アプリ ラボ
-      body: アプリラボは、シンプルなアプリケーションを作ることができるプログラミング環境です。アプリをデザインして、ブロックやJavaScriptでコードを書いて作品ができたら、すぐにあなたのアプリを共有することができます。
-      body_short: アプリをデザインして、ブロックやJavaScriptでコードを書いて作品ができたら、すぐにあなたのアプリを共有することができます。
-      audience: 13才以上対象
-      cta: Learn how
+      title: App Lab
+      body: 應用程序實驗室是一個可以讓你簡單在編寫應用程式的程式設計環境。設計應用程式，代碼塊或 JavaScript 使它運作，然後在幾秒鐘內分享您的應用程式。
+      body_short: 設計應用程式，編寫代碼塊或 JavaScript 使它運作，然後在幾秒鐘內分享您的應用程式。
+      audience: 13歲以上
+      cta: 學習怎樣做
     hoc:
-      title: 古典的な迷路
-      body: コンピュータサイエンスの基本に挑戦してみてください。もう何百万人も挑戦した人がいます
+      title: 經典迷宮
+      body: 請試試數百萬人已經體驗過的電腦科學基礎課程。
     flappy:
-      title: Flappy Code
-      body: 10分以内で自分だけのゲームを作ってみませんか？Flappy Codeを試す
+      title: Flappy遊戲設計
+      body: '寫出一個你自己的遊戲只要不到十分鐘!? 試試我們的"Flappy程式設計"教學'
     20-hour:
-      title: 上級コース
-      body: この20時間コースではコンピューターサイエンスの核となる部分やプログラミングの概念について紹介します。このコースは等級K-8用の授業に使われることを考慮して設計されました。しかし、ご安心ください全年齢を対象としており、楽しくプログラミングを学ぶことができます。
-      body_short: コース 2 から 4 の高速コースでは、コンピュータ サイエンスの基礎を学びます。
+      title: 速成課程
+      body: 這 20 小時課程將介紹電腦科學和程式設計的核心概念。本課程是設計給 K-8 年級的學生在教室內使用，但對所有年齡的人來說，也能把本課程當成興趣來學習。
+      body_short: 在速成課程2-4中學習電腦科學的基本知識。
     hoc2014:
-      try_new_tutorial: 動作試験中の新しい Hour of Code チュートリアルをお試しください。
-      try_frozen: 「アナと雪の女王」から、アナとエルザとアーティスト
+      try_new_tutorial: 試試全新Beta版的一小時程式碼教程
+      try_frozen: 來自冰雪奇緣的藝術家安娜及愛紗。
     gallery:
-      title: ギャラリー
-      body: ユーザーが作成したアプリやアーティストの画像のギャラリーを見る
+      title: 相片圖庫
+      body: 觀看由所有使用者所建立的應用程式以及藝術圖畫。
     frozen:
-      title: アナと雪の女王
+      title: 冰雪奇緣
     starwars:
-      title: スター・ウォーズ
+      title: 星際大戰
     infinity:
-      title: インフィニティ プレイ ラボ
+      title: Infinity Play Lab
       body: Use Play Lab to create a story or game starring Disney Infinity characters.
     minecraft:
-      title: マインクラフト
-      body: プログラムを通して、Minecraftの世界を探検しましょう。
+      title: 當個創世神
+      body: 使用程式來探索創世神的世界
     unplugged:
       title: Unplugged Lessons
-      audience: 6歳以上対象
+      audience: Ages 4+
       body: "We've compiled a list of unplugged lessons for you to use in your classroom. Now you can teach the fundamentals of computer science, whether you have computers in your classroom or not! Try using these lessons as a stand-alone course or as complementary lessons for any computer science course."
       body_short: "If you don't have computers, try these unplugged lessons in your classroom."
   gallery:
-    students_drew_these_with_code: これらの作品は、生徒たちがコードを使って描きました！
-    students_made_these_with_code: これらの作品は、生徒たちがコードを使って創りました！
-    picture_count: 'コンピュータ・プログラムを用いて生徒たちが描いた絵は、これまでの <b>%{days}</b> 日間に <b>%{count}</b> 作品です。それぞれの絵をクリックすると、その絵を描くプログラムを見ることができます。'
-    activity_count: 'コンピュータ・プログラムを用いて生徒たちが作ったアプリは、これまでの <b>%{days}</b> 日間に <b>%{count}</b> 作品です。それぞれのスクリーンショットをクリックすると、そのアプリのプログラムを見ることができます。'
-    want_to_make_your_own: 自分でも創ってみたいですか？
+    students_drew_these_with_code: 學生用程式畫出這些圖案 ！
+    students_made_these_with_code: 學生們使用程式碼做了這些內容！
+    picture_count: '在過去的 <b>%{days}</b> 天裡，學生們經由編寫電腦程式畫了 <b>%{count}</b> 張圖片。點擊圖片觀看每個程式是如何運作。'
+    activity_count: '在過去的 <b>%{days}</b> 天裡，學生們經由編寫電腦程式完成了<b>%{count}</b> 個app以及圖畫。點擊圖片及螢幕截圖來觀看每個程式是如何運作。'
+    want_to_make_your_own: 想要做您自已的嗎？
     how_to_save: 'On the last level of these tutorials, click "Finish" and "Save" to save your work to the gallery.'
-    more: 'つづきを読む &rarr;'
-    caption_by_name_age: '作成者： %{name} ( %{age} 歳)'
+    more: '更多 &rarr;'
+    caption_by_name_age: '%{name}, %{age} 歲'
     caption_time_ago: '%{time_ago} 前'
-    header: ギャラリー
-    header_playlab: プレイラボ
-    header_artist: アーティスト
-    report_abuse: 不正を報告
+    header: 相片圖庫
+    header_playlab: 播放實驗室
+    header_artist: 畫家
+    report_abuse: 濫用回報
   landing:
-    prerelease: "このコースはまだ<span class='betatext'>ベータ版</span>です。今後改善と変更が行われる可能性があります。"
-    prerelease_hoc2014: "このチュートリアルは<span class='betatext'>ベータ版</span>です。フィードバックによって改善と変更が行われることが想定されます。"
-    report_bug: バグを報告
-    support: 説明を見る
+    prerelease: "本課程還在 <span class='betatext'>beta</span>階段。這表示它不是本課程的最後版本，它會依據收到的回饋，作出修訂與改善。"
+    prerelease_hoc2014: "本教程還在 <span class='betatext'>beta</span>階段。它會依據收到的回饋，作出修訂與改善。"
+    report_bug: 報告錯誤
+    support: 請求幫助
     support_url: //support.code.org
-    help_resources: ヘルプとリソース
+    help_resources: 説明和資源
   multi:
-    wrong_title: 不正解
-    wrong_body: 不正解です。やりなおしてみてください。
-    correct_title: 正解
-    correct_body: 正解です。
+    wrong_title: 不正確的答案
+    wrong_body: 你的答案不正確。請再試一次 ！
+    correct_title: 正確
+    correct_body: 這是正確的答案。
     toofew_title: Too few answers.
     toofew_body: Please select two answers before submitting.
   multi-submittable:
-    wrong_title: ありがとうございます
-    wrong_body: 回答していただきありがとうございました。
-    correct_title: ありがとうございます
-    correct_body: 回答していただきありがとうございました。
+    wrong_title: 謝謝
+    wrong_body: 感謝您提交的答案。
+    correct_title: 謝謝
+    correct_body: 感謝您提交的答案。
     toofew_title: Too few answers.
     toofew_body: Please select two answers before submitting.
   level_group:
-    wrong_title: ありがとうございます
-    wrong_body: 回答していただきありがとうございました。
-    correct_title: ありがとうございます
-    correct_body: 回答していただきありがとうございました。
+    wrong_title: 謝謝
+    wrong_body: 感謝您提交的答案
+    correct_title: 謝謝
+    correct_body: 感謝您提交的答案
   level_group-submittable:
-    wrong_title: ありがとうございます
-    wrong_body: 回答していただきありがとうございました。
-    correct_title: ありがとうございます
-    correct_body: 回答していただきありがとうございました。
+    wrong_title: 謝謝
+    wrong_body: 感謝您提交的答案
+    correct_title: 謝謝
+    correct_body: 感謝您提交的答案
     unsubmit-title: Unsubmit your assessment
     unsubmit-body: 'Unsubmitting your assessment will reset the submitted time and date.  Are you sure?'
-    submit-incomplete-title: 評価を提出します。
-    submit-incomplete-body: |
-      いくつかの質問が回答されてないままになっています。このままでよろしいですか?
-      ※投稿したあとで評価の再編集はできません。
-    submit-complete-title: 評価を提出します。
+    submit-incomplete-title: 提交您的習題
+    submit-incomplete-body: 'You left some questions incomplete.  You cannot edit your assessment after submitting it.  Are you sure?'
+    submit-complete-title: 提交您的習題
     submit-complete-body: 'You cannot edit your assessment after submitting it.  Are you sure?'
   match:
-    wrong_title: うまく解決できていません。
-    wrong_body: うまく解決できていません。もう一度やってみてください。
-    correct_title: 正解
-    correct_body: 正解です。
+    wrong_title: 不正確的解決方案
+    wrong_body: 您的解決方案不正確。請再試一次 ！
+    correct_title: 正確
+    correct_body: 這是正確的答案。
   contract_match:
-    wrong_title: 不正解
-    badname: あなたの契約は、間違った名前が使われています。
-    badname_case: 関数名は大文字小文字を区別します。登録名の大文字小文字をご確認ください。
-    badrange: あなたの契約に間違った設定があります。
-    baddomainsize: あなたの契約のドメインの項目数が間違っています。
-    baddomainname: ひとつかそれ以上のドメイン項目で間違った名前が設定されています。
-    baddomaintype: ひとつかそれ以上のドメイン項目で間違った設定が行われているか、順番が間違っています。
+    wrong_title: 不正確的答案
+    badname: 契約上的名稱有誤。
+    badname_case: 函數名稱是大小寫有別的。試著更改聯絡人名稱的大小寫。
+    badrange: 契約上的範圍有誤。
+    baddomainsize: 您的契約裡的定義域沒有正確的項目數。
+    baddomainname: 有一個或多個您的定義域欄位的名稱錯誤。
+    baddomaintype: 有一個或多個您的定義域欄位的類型錯誤，或順序錯誤。
   text_match:
-    placeholder: ここに答えを入力
-    open_response_title: ありがとう
-    open_response_body: ご回答ありがとうございます。
-    correct_title: 正解
-    correct_body: 正解です。
+    placeholder: 在這裡輸入你的答案
+    open_response_title: 謝謝
+    open_response_body: 感謝您的回應！
+    correct_title: 正確
+    correct_body: 這是正確的答案。
   dialog:
-    ok: OK
-    startover_title: 本当に最初からやり直してもよいですか？
-    startover_body: パズルを最初の状態にリセットし、追加または変更されたすべてのブロックを削除します。
-    startover_ok: 最初（さいしょ）からやり直（なお）す。
-    startover_cancel: キャンセル
+    ok: 確定
+    startover_title: 你確定要重新開始嗎？
+    startover_body: 這個動作將會重置關卡，同時你所新增或更動的所有資料也將跟著一併重置回到起始狀態。
+    startover_ok: 重新開始
+    startover_cancel: 取消
   time:
-    hour: 1 時間
-    day: 日
+    hour: 一小時
+    day: 天
     week: 週
   data:
     script:
       name:
         20-hour:
-          title: コンピューター科学コース （15-25 時間）の入門編
-          description: この20時間コースではコンピューターサイエンスの核となる部分やプログラミングの概念について紹介します。このコースは等級K-8用の授業に使われることを考慮して設計されました。しかし、ご安心ください全年齢を対象としており、楽しくプログラミングを学ぶことができます。
+          title: 'K 8 簡介電腦科學課程 （15-25 小時） '
+          description: 這 20 小時課程將介紹電腦科學和程式設計的核心概念。本課程是設計給 K-8 年級的學生在教室內使用，但對所有年齡的人來說，也能把本課程當成興趣來學習。
         Hour of Code:
-          title: Hour of Code 2013
+          title: 一小時Code 2013
           description: ""
         edit-code:
-          title: コードを編集します。
+          title: 編輯程式碼
           description: ""
         events:
-          title: イベント
+          title: 事件類別
           description: ""
         builder:
-          title: ビルダー
+          title: 生成器
           description: ""
         flappy:
-          title: Flappy Code
-          description: 10分以内で自分だけのゲームを作ってみませんか？Flappy Codeを試す
+          title: Flappy遊戲設計
+          description: '寫出一個你自己的遊戲只要不到十分鐘!? 試試我們的"Flappy程式設計"教學'
         jigsaw:
-          title: ジグソーパズル
+          title: 拼圖
           description: ""
         step:
-          title: ステップ
+          title: 步驟
           description: ""
         sample_level_builder:
-          title: レベルビルダーの例
+          title: 範例關卡產生器
           description: ""
   age_interstitial:
-    age: 年齢
-    header: アカウント情報の更新
-    message: ユーザーにより良い体験をしてもらうために、プライバシー保護を強化しながら現在も更新中です。そのため、こちらからみなさんの年齢データの入力にご協力ください。cord.org は決して第三者に情報を販売、共有、貸与はいたしません。
-    sign_out: '年齢を公表しくない場合は、<a href="%{url}"> サインアウト</a> してください。'
-  zendesk_too_young_message: 'ご迷惑致しますが、若い方はこのサポートサイトのログインは受け付けできないようになっているため、<a href="http://support.code.org">support.code.org</a>をログインせずにご利用頂き、もしくは親または先生の方に代わりに連絡して頂くようにをお願い致します。'
+    age: 你的年齡
+    header: 帳戶資訊更新
+    message: '為了讓使用者有更好的體驗，以及更好的隱私權保護。我們需要現有的使用者在這裡輸入他們的年齡。<br/>和往常一樣，code.org將永遠不會將這些資料以任何形式與其它夥伴共享。'
+    sign_out: '如果您不願意提供您的年齡，您可以選擇<a href="%{url}">登出</a>。'
+  zendesk_too_young_message: '對不起，過度年輕的使用者無法登入到我們支援的網站。您可以瀏覽無須登入的網頁 <a href="HTTP://support.code.org"> support.code.org</a> 或請您的父母或老師聯繫我們。'
   progress:
-    not_started: 未実施
-    in_progress: 途中
-    completed_too_many_blocks: 完成、ブロックが多すぎ
-    completed_perfect: 完成、完璧
-    furthest_level_attempted: 到達レベル
-    assessment: 評価
-    submitted: 投稿しました。
+    not_started: 未開始
+    in_progress: 進行中
+    completed_too_many_blocks: 完成，但使用過多積木
+    completed_perfect: 完美完成
+    furthest_level_attempted: 嘗試到的最遠關卡
+    assessment: 習題
+    submitted: 已提交
   studio:
-    courses_working_on: 試行中のコース
-    completed_courses: 完了したコース
-    all_courses: すべてのコース
+    courses_working_on: 您正在進行的課程
+    completed_courses: 已完成的課程
+    all_courses: 所有課程
   project:
-    projects: プロジェクト
-    create: プロジェクトを作る
-    create_a_project: 新しいプロジェクトを作る
-    new: 新しく作る
-    rename: 名前を変更
-    save: 保存
-    delete: 削除
-    exit: コースに戻る
-    my_projects: マイプロジェクト
-    share: 共有
-    share_title: プロジェクトを共有
-    share_copy_link: 'リンクをコピー:'
-    share_embed_description: You can paste the embed code into an HTML page to display the project on a webpage.
-    embed: Embed
-    advanced_share: Show advanced options
-    close: 閉じる
-    more: それ以上
-    name: 名前
-    updated: 更新された
-    project_type: プロジェクトの種類
-    help_text: '下にある <strong>アプリを作る</strong> か <strong>何かを描く</strong> をクリックして、新しいプレイラボかアーティストプロジェクトを作りましょう！ <br/>いつでも、戻ってきてプロジェクトを再開することができます。'
-    need_help: スタートするのをお手伝いしましょうか？
-    really_delete: 削除しますか？
-    delete_yes: はい
-    delete_no: ちがいます
-    saved: 保存されました
-    not_saved: 保存されていません
-    cancel: キャンセル
-    delete_confirm_title: このプロジェクトを本当に削除してもよろしいですか？
-    delete_confirm_text: プロジェクトを削除すると、マイプロジェクトのリストからは永久に消えます。今までにリンクを共有した人は誰もそのプロジェクトを見ることができなくなります。
-    view_all: マイプロジェクトを見る
-    remix: リミックス
-    click_to_remix: '"Remix" をクリックしてあなただけのバージョンを作成しましょう'
-    edit_project: プロジェクトを編集します
+    projects: 專案
+    create: 創建專案
+    create_a_project: 創建一個新專案：
+    new: 創建新的專案
+    rename: 重新命名
+    save: 儲存
+    delete: 删除
+    exit: 返回課程
+    my_projects: 我的專案
+    share: 分享
+    share_title: 分享專案
+    share_copy_link: 複製連結：
+    share_embed_description: 您可以插入的代碼貼到 HTML 頁面，就可以在另一個網頁上顯示專案。
+    embed: 插入
+    advanced_share: 顯示進階選項
+    close: 退出
+    more: 更多
+    name: 你的名字
+    updated: 最後更新於
+    project_type: 專案類型
+    help_text: '點擊下方的<strong>製作應用程式</strong> 或 <strong>繪製</strong> ，製作新的Play Lab或演出者專案！<br/>你也可以在任何時候回來繼續您的專案。'
+    need_help: 需要獲得説明以開始嗎？
+    really_delete: 要刪除嗎？
+    delete_yes: 是
+    delete_no: 否
+    saved: 已存擋
+    not_saved: 未保存
+    cancel: 取消
+    delete_confirm_title: 您確定要刪除此專案？
+    delete_confirm_text: 刪除您當前的專案將會把它永久的從您的”我的專案清單“移除。您已共用的連結將不再使任何人能夠查看您的專案。
+    view_all: 查看我的專案
+    remix: 混音
+    click_to_remix: 點擊「混音」，創造自己的版本！
+    edit_project: 編輯專案
     abuse:
-      tos: "このプロジェクトは、Code.org との <a href='http://code.org/tos'> サービス利用規約</a> に違反するという報告があったため、他のユーザーとは共有できません。"
-      contact_us: "これがエラーであると思うなら、 <a href='https://code.org/contact'> こちらからお問い合わせ</a>ください。"
-      go_to_code_studio: コードスタジオに行く
+      tos: "這個專案被回報為違反 Code.org 的<a href='http://code.org/tos'>服務條款</a>因此不能跟其它人進行分享。"
+      contact_us: "如果你認為這是一個錯誤，請與我們 <a href='HTTPs://code.org/contact'> 聯繫</a>。"
+      go_to_code_studio: 前往程式碼工作室
       report_abuse_form:
-        intro: 不快なコンテンツ、脅迫、ネット上のいじめ、嫌がらせ、またはコードスタジオで構築されたアプリで作成した自身のコンテンツに対する著作権侵害が発生した場合には、以下のフォームへ記入してください。報告された内容については、その内容を真剣に受け止め、調査および適切な処置をとります。
+        intro: 若你發覺程式碼工作室製作出來的程式應用有冒犯性的內容、 威脅、 網路霸淩、 騷擾或侵犯版權的內容，請填寫下面的表格。我們將非常認真地看待你報告的內容，並進行相對應的調查及採取適當的行動。
         validation:
-          email: メール アドレスを入力してください
-          age: 年齢を指定してください
-          abuse_type: このコンテンツがどのように利用規約に違反しているか回答してください
-          abuse_detail: 報告している内容について詳しく説明してください
-        abusive_url: 報告されたコンテンツのURL
+          email: 請提供一個電子郵件地址
+          age: 請指定適用年齡
+          abuse_type: 請說明內容是如何違反服務條款。
+          abuse_detail: 請提供有關您所回報內容的詳細資訊
+        abusive_url: 被回報內容的URL網址
         abuse_type:
-          question: 'このコンテンツは、%{link_start}利用規約%{link_end}に対し、どのように違反していますか？'
-          harassment: 脅迫、ネット上のいじめ、嫌がらせ
-          offensive: 不快なコンテンツ
-          infringement: 著作権侵害
-          other: その他
-        detail: 報告の対象となるコンテンツについて、できるかぎり多くの詳細を提供してください。
-        acknowledge: 'この情報を送信することにより、報告された内容は %{link_start_privacy}個人情報保護方針%{link_end} および %{link_start_tos}利用規約%{link_end}に基づき、処理されることに同意したとみなされます。'
+          question: '這些內容是如何違反%{link_start}服務條款%{link_end}的呢？'
+          harassment: 威脅，網路霸淩及騷擾
+          offensive: 冒犯性的內容
+          infringement: 著作權侵權
+          other: 其他
+        detail: 依據您所回報的內容，請盡可能提供更詳盡的細節。
+        acknowledge: '送出這些資訊，代表你已經了解它將依照 %{link_start_privacy}隱私權政策%{link_end} 以及 %{link_start_tos}服務條款%{link_end}進行處理及保管。'
   peer_review:
     accepted:
-      name: Accepted
+      name: 接受
       description: '<strong>Yes</strong>, this submission <strong>meets</strong> the requirements'
     rejected:
-      name: Rejected
+      name: 已拒絕
       description: '<strong>No</strong>, this submission <strong>does not meet</strong> the requirements'
     escalated:
       name: Escalated
@@ -682,22 +681,22 @@ ja:
     outdated: This feedback was added for a previously submitted version
   components:
     icon_library:
-      search_placeholder_text: アイコンの検索..
-      no_icons_found: アイコンが見つかりませんでした。
+      search_placeholder_text: 搜索圖示...
+      no_icons_found: 沒有圖示
     playzone:
-      artist_description: アーティストでかっこいい絵やデザインを描きましょう！
+      artist_description: 和小畫家一起畫圖和設計!
       artist_title: New Drawing
       continue_button: Go on to the next Stage
-      playlab_description: プレイラボでお話やゲームを作りましょう！
+      playlab_description: 創建一個故事或做遊戲玩實驗室！
       playlab_title: New App
       primary_header: 'Congratulations! You finished %{stageName}!'
       projects_description: Revisit one of your existing projects.
       projects_title: Open a project
       secondary_header: Ask your teacher what to do next
   flex_category:
-    required: 概要
+    required: 概觀
     content: Content
-    practice: Teaching Practices
+    practice: 老師的做法
   external_links:
     disclaimer_md: "<strong>Disclaimer: You are now leaving this domain, to a site that is not operated by Code.org.</strong> This site may have privacy policies that differ from Code.org's.<br/><br/>We have selected these third party resources because we think they will be useful to you. While we are not directly responsible for the content of this website, please <a href='%{support_url}'>contact support</a> if you find the content objectionable, or if the linked site is no longer available."
   hoc_download:

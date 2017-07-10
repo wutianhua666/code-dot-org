@@ -12,13 +12,13 @@ social: "og:title": "<%= hoc_s(:meta_tag_og_title) %>" "og:description": "<%= ho
 
 twitter = {:url=>"http://hourofcode.com", :related=>'codeorg', :hashtags=>'', :text=>hoc_s(:twitter_default_text)} twitter[:hashtags] = 'HourOfCode' unless hoc_s(:twitter_default_text).include? '#HourOfCode' %>
 
-# Hour of Codeのイベント主催への登録にご協力頂き大変ありがとうございます！
+# 謝謝您報名舉辦Hour of Code!
 
-あなたは、Hour of Codeのイベントを開催し、生徒にコンピュータサイエンスに触れる機会を提供して下さりました。ありがとうございます。<%= campaign_date('full') %> 粗品に関する情報や、新しいチュートリアルについては、追って連絡させていただきます。 もしお時間があれば、下記の活動を行っていただけると、大変助かります。よろしくお願い致します。
+您的努力讓世界各地的學生都有機會在<%= campaign_date('full') %>，透過一小時的程式設計課程來*改變他們的一生*。 We'll be in touch about prizes, new tutorials and other exciting updates. What can you do now?
 
-## 1. みんなに広めましょう
+## 1.廣為宣傳
 
-Hour of Codeについて、ご友人の方に**#HourOfCode**のハッシュタグを利用して広めてください。!
+You just joined the Hour of Code movement. Tell your friends with **#HourOfCode**!
 
 <%= view :share_buttons, facebook:facebook, twitter:twitter %>
 
@@ -26,21 +26,21 @@ Hour of Codeについて、ご友人の方に**#HourOfCode**のハッシュタ�
 
 [Search our volunteer map](%= resolve_url('https://code.org/volunteer/local') %) for volunteers who can visit your classroom or video chat remotely to inspire your students about the breadth of possibilities with computer science.
 
-## 3. 学校全体でHour of Codeを開催できるように働きかける
+## 3. Ask your whole school to offer an Hour of Code
 
-[このメール](%= resolve_url('/promote/resources#sample-emails') %)を校長に送信して、あなたの学校の全てのクラスでHour of Codeのイベントを行うようにお願いしましょう。
+[Send this email](%= resolve_url('/promote/resources#sample-emails') %) to your principal and challenge every classroom at your school to sign up.
 
-## 4. 働いている会社に働きかける
+## 3. 問問你的同事是否想參與
 
-[このメール](%= resolve_url('/promote/resources#sample-emails') %)をあなたの上司やCEOに送信しましょう。
+[Send this email](%= resolve_url('/promote/resources#sample-emails') %) to your manager or company's CEO.
 
-## 5. Hour of Codeを、周囲のコミュニティで広める
+## 5. Promote Hour of Code in your community
 
-[地元のグループを勧誘](%= resolve_url('/promote/resources#sample-emails') %)しましょう。例えば、ボーイスカウトや大学、教会などのグループです。 新しいスキルを学ぶのは、必ずしも学校である必要はありません。 [これらのポスターやバナー、ステッカーやビデオ](%= resolve_url('/promote/resources') %)をイベントで利用しましょう。
+[Recruit a local group](%= resolve_url('/promote/resources#sample-emails') %)— boy/girl scouts club, church, university, veterans group, labor union, or even some friends. You don't have to be in school to learn new skills. Use these [posters, banners, stickers, videos and more](%= resolve_url('/promote/resources') %) for your own event.
 
-## 6. 議員に働きかける
+## 5. 找當地的民選官員支持Hour of Code
 
-[このメール](%= resolve_url('/promote/resources#sample-emails') %)を地元選出の議員や教育委員会に送信して、学校で行うHour of Codeのイベントを見学して頂けるようにお願いしましょう。 この取り組みは、コンピュータサイエンス教育に関する活動を長期的に支援することにつながります。
+[Send this email](%= resolve_url('/promote/resources#sample-emails') %) to your local representatives, city council, or school board and invite them to visit your school for the Hour of Code. It can help build support for computer science in your area beyond one hour.
 
 ## 7. Plan your Hour of Code
 

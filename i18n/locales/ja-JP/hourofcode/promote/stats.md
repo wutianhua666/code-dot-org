@@ -6,15 +6,15 @@ title: <%= hoc_s(:title_stats) %> layout: wide nav: promote_nav
 
 <%= view :signup_button %>
 
-# 推薦と統計データ
+# 引言和有用的統計資訊
 
-## ニュースレター用に以下の宣伝文句をご利用ください
+## 在新聞稿中使用這則引言
 
-### あなたの学校にもコンピューターサイエンスを導入しましょう。Hour of Codeで始めましょう。
+### 把電腦科學帶進您的學校。從Hour of Code開始!
 
-コンピューターはありふれていますが、コンピューター科学を教える学校は10年前より少なくなっています。 良いお知らせは、私たちはこれを変えようとしているということです。 昨年、 [Hour of Code](%= resolve_url('/') %) について聞いたことがありますか？もしそうならば、我々の素晴らしい成果をご存じかもしれません。 最初のHour of Codeでは、1500万人もの生徒たちがコンピュータサイエンスの扉を開きました。 そして昨年、その数は6000万人に増えたのです！ [Hour of Code](%= resolve_url('/') %) は１時間でできるのコンピュータサイエンスの教材で、プログラミングに関する人々の勘違いを解くこと、そして誰もがその基礎を学ぶために設計されました。 コンピュータサイエンス教育週間の間に、Hour of Code を主催するために[登録](%= resolve_url('/') %) してください。<%= campaign_date('full') %> 下記のページより、あなたの学校を地図に登録してください。 （https://hourofcode.com/）<%= @country %>
+電腦無處不在但教電腦科學的學校比 10 年前還少。 好消息是我們正在改變此狀況。 If you heard about the [Hour of Code](%= resolve_url('/') %) last year, you might know it made history. In the first Hour of Code, 15 million students tried computer science. Last year, that number increased to 60 million students! The [Hour of Code](%= resolve_url('/') %) is a one-hour introduction to computer science, designed to demystify code and show that anybody can learn the basics. [Sign up](%= resolve_url('/') %) to host an Hour of Code this <%= campaign_date('full') %> during Computer Science Education Week. To add your school to the map, go to https://hourofcode.com/<%= @country %>
 
-## インフォグラフィック
+## Infographics
 
 <%= view :stats_carousel %>
 
