@@ -1073,11 +1073,11 @@ exports.install = function (blockly, blockInstallOptions) {
         // For diagonal move blocks, the move distance is longer than normal by
         // a factor of sqrt(2), so that a move north followed by a move west
         // takes you to the same spot as a single move northwest.
-        var defaultDistance =
-          CardinalDirections.includes(directionConfig.studioValue) ?
-          SimpleMove.DEFAULT_MOVE_DISTANCE :
-          SimpleMove.DEFAULT_MOVE_DISTANCE * Math.sqrt(2);
-        var distance = this.getTitleValue('DISTANCE') || defaultDistance;
+        // var defaultDistance =
+        //   CardinalDirections.includes(directionConfig.studioValue) ?
+        //   SimpleMove.DEFAULT_MOVE_DISTANCE :
+        //   SimpleMove.DEFAULT_MOVE_DISTANCE * Math.sqrt(2);
+        var distance = this.getTitleValue('DISTANCE'); //|| defaultDistance;
         return 'Studio.' + methodName + '(\'block_id_' + this.id + '\'' +
           ', ' + sprite +
           ', ' + direction +
