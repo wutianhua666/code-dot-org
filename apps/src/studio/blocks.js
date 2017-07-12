@@ -94,6 +94,10 @@ exports.enableProjectileCollisions = function (blockly) {
   projectileCollisions = true;
 };
 
+exports.enableEdgeCollisions = function (blockly) {
+  edgeCollisions = true;
+};
+
 exports.setStartAvatars = function (avatarList) {
   startAvatars = avatarList.slice(0);
 };
