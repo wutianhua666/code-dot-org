@@ -81,6 +81,7 @@ var generateSetterCode = function (opts) {
 
 // These are set to the default values, but may be overridden
 var spriteCount = 6;
+var edgeCollisions = false;
 var projectileCollisions = false;
 var startAvatars = [];
 
