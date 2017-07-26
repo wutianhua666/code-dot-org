@@ -1967,10 +1967,13 @@ StudioApp.prototype.handleHideSource_ = function (options) {
         var brRow = document.createElement('br');
         buttonRow.appendChild(brRow);
         var connectDiv = document.createElement('div');
+        var connectButton = document.createElement('button');
         var connectA = document.createElement('a');
         connectA.setAttribute('href', 'http://www.istemedu.com')
-        connectA.appendChild(document.createTextNode('联系客服报名'));
-        connectDiv.appendChild(connectA);
+        connectA.setAttribute('style', 'font-size: 20px;')
+        connectA.appendChild(document.createTextNode('联系老师沟通报名'));
+        connectButton.appendChild(connectA);
+        connectDiv.appendChild(connectButton);
         buttonRow.appendChild(connectDiv);
       }
     }
