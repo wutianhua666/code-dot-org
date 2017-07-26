@@ -1963,6 +1963,15 @@ StudioApp.prototype.handleHideSource_ = function (options) {
         });
 
         buttonRow.appendChild(openWorkspace);
+        
+        var brRow = document.createElement('br');
+        buttonRow.appendChild(brRow);
+        var connectDiv = document.createElement('div');
+        var connectA = document.createElement('a');
+        connectA.setAttribute('href', 'http://www.istemedu.com')
+        connectA.appendChild(document.createTextNode('联系客服报名'));
+        connectDiv.appendChild(connectA);
+        buttonRow.appendChild(connectDiv);
       }
     }
   }
