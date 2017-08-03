@@ -1971,7 +1971,7 @@ StudioApp.prototype.handleHideSource_ = function (options) {
         var connectA = document.createElement('a');
         connectA.setAttribute('href', 'http://studio.istemedu.com/contact/entry')
         connectA.setAttribute('style', 'font-size: 20px;')
-        connectA.appendChild(document.createTextNode('联系老师沟通报名'));
+        connectA.appendChild(document.createTextNode('我要报名'));
         connectButton.appendChild(connectA);
         connectDiv.appendChild(connectButton);
         buttonRow.appendChild(connectDiv);
