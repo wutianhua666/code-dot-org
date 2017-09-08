@@ -91,16 +91,16 @@ Promise.all([
     }
   })),
 
-  // makerlab-only dependencies for app lab
-  build_commands.bundle(_.extend({}, defaultOptions, {
-    filenames: [
-      'makerlab/makerlabDependencies.js'
-    ],
-    commonFile: 'makerlab',
-    browserifyGlobalShim: {
-      "jquery": "$"
-    }
-  })),
+  // // makerlab-only dependencies for app lab
+  // build_commands.bundle(_.extend({}, defaultOptions, {
+  //   filenames: [
+  //     'makerlab/makerlabDependencies.js'
+  //   ],
+  //   commonFile: 'makerlab',
+  //   browserifyGlobalShim: {
+  //     "jquery": "$"
+  //   }
+  // })),
 
   build_commands.bundle(_.extend({}, defaultOptions, {
     filenames: [
