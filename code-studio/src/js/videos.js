@@ -57,7 +57,6 @@ function createVideo(options) {
     })
   }
   return dom.addClass('video-player').attr({
-    src: 'http:'+options.download,
     scrolling: 'no'
   });
 }
