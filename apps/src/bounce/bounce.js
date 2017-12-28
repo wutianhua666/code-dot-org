@@ -404,10 +404,10 @@ var drawMap = function () {
         obsIcon.setAttributeNS(
           'http://www.w3.org/1999/xlink', 'xlink:href', skin.obstacle);
         obsIcon.setAttribute('x',
-                             Bounce.SQUARE_SIZE * x -
+                             Bounce.SQUARE_SIZE * (x + 0.5) -
                              obsIcon.getAttribute('width') / 2);
         obsIcon.setAttribute('y',
-                             Bounce.SQUARE_SIZE * y -
+                             Bounce.SQUARE_SIZE * (y + 0.9) -
                              obsIcon.getAttribute('height'));
         svg.appendChild(obsIcon);
       }
